@@ -3,7 +3,345 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --color-gray: #3c3c3c;
+            --color-light-gray: #d1d1d1;
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --color-pink: #ED1458;
+            --color-dark-pink: #a50e3d;
+          }
+          
+          html {
+            font-size: 10px;
+          }
+          
+          body {
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            color: var(--color-gray);
+            font-size: 1.8rem;
+          }
+          
+          header {
+            position: fixed;
+            top: 0;
+            display: flex;
+            align-items: center;
+            background-color: var(--color-white);
+            width: 100%;
+            max-height: 120px;
+            z-index: 1;
+          }
+          
+          .logo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 60vw;
+            margin-left: 1rem;
+          }
+          
+          .logo > p {
+            color: var(--color-black);
+            font-family: 'Fjalla One', sans-serif;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            margin-bottom: 3.5rem;
+          }
+          
+          #header-img {
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+            margin-left: 1rem;
+          }
+          
+          h2 {
+            text-align: center;
+            margin: 3rem;
+            text-transform: uppercase;
+            font-size: 4rem;
+          }
+          
+          a {
+            text-decoration: none;
+            color: var(--color-gray);
+          }
+          
+          a:hover {
+            color: var(--color-pink);
+          }
+          
+          li {
+            list-style: none;
+          }
+          
+          #nav-bar > ul {
+            width: 35vw;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2.5rem;
+            margin-right: 2rem;
+          }
+          
+          .puzzles-container {
+            display: block;
+            height: auto;
+            margin-top: 100px;
+            margin-right: 2rem;
+            margin-left: 2rem;
+            background-image: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+            ),            url(https://source.unsplash.com/3y1zF4hIPCg/1600x900);
+            background-size: cover;
+            padding: 100px;
+            color: var(--color-white);
+            text-align: center;
+          }
+          
+          .puzzles-container > h2 {
+            margin: 2rem 2rem 4rem 2rem;
+          }
+          
+          .puzzles-container > p {
+            font-size: 2rem;
+            line-height: 1.3;
+          }
+          
+          button {
+            border: 2px solid var(--color-gray);
+            cursor: pointer;
+            background: none;
+            text-transform: uppercase;
+            font-size: 1.7rem;
+            border-radius: .1rem;
+            padding: 1rem;
+          }
+          
+          button:hover {
+            border: 2px solid var(--color-pink);
+            color: var(--color-pink);
+          }
+          
+          #browse-our-collection {
+            background: none;
+            color: var(--color-white);
+            border: 2px solid white;
+            padding: 1rem;
+            margin: 3rem 1rem 1rem 1rem;
+            font-size: 2.5rem;
+          }
+          
+          #browse-our-collection:hover {
+            background: var(--color-white);
+            color: var(--color-black);
+            transition: background-color .15s ease;
+            transition: border-color .15s ease;
+          }
+          /*.video-wrapper {
+            max-width: 560px;
+            margin: auto;
+            position: relative;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+          }
+          #video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+          }*/
+          #pricing {
+            display: grid;
+            grid-template-columns: 10% 1fr 1fr 1fr 10%;
+            grid-template-rows: auto auto;
+            grid-gap: 30px;
+            justify-items: center;
+          }
+          .puzzle-size {
+            border: 1px solid var(--color-light-gray);
+            padding: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 5px 5px rgba(0,0,0,0.23);
+          }
+          .puzzle-size:hover {
+            box-shadow: 0 2.5px 5px rgba(0,0,0,0.10), 0 1.5px 1.5px rgba(0,0,0,0.23);
+            transition: box-shadow .2s ease;
+          }
+          .puzzle-size-header {
+            font-size: 1.5em;
+          }
+          .puzzle-size-list > li {
+            list-style-type: disc;
+            margin-bottom: 1em;
+            margin-left: -20px;
+          }
+          #pricing > h2 {
+            grid-area: 1/3/2/4;
+            margin-top: 2em;
+            margin-bottom: 5px;
+          }
+          #small {
+            grid-area: 2/2/2/3;
+            justify-self: end;
+          }
+          #medium {
+            grid-area: 2/3/3/4;
+          }
+          #large {
+            grid-area: 2/4/3/5;
+            justify-self: start;
+          }
+          #pricing-button {
+            border-radius: .1rem;
+            width: 100%;
+            margin-top: 1em;
+            background: var(--color-pink);
+            border: none;
+            color: var(--color-white);
+          }
+          #pricing-button:hover {
+            background: var(--color-dark-pink);
+            transition: background-color .2s ease;
+          }
+          .about-us-and-contact-us {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+            grid-gap: 15px;
+            grid-template-areas:
+              "about-us"
+              "contact-us";
+            justify-items: center;
+            margin-bottom: 50px;
+          }
+          #about-us {
+            grid-area: about-us;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+          }
+          #contact-us {
+            grid-area: contact-us;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          #form {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto auto;
+            grid-gap: 10px;
+            justify-items: center;
+          }
+          #email-label {
+            grid-area: 1/1/2/2;
+            margin-top: 25px;
+          }
+          #form > p {
+            grid-area: 2/1/3/2;
+            margin-top: -7px;
+          }
+          .emailSubmit {
+            grid-area: 3/1/4/2;
+            justify-self: center;
+          }
+          #email {
+            border: 2px solid var(--color-gray);
+            border-radius: .1rem;
+            padding: .5em;
+            font-size: 1em;
+            width: 300px;
+            margin-right: 5px;
+          }
+          #submit {
+            /grid-area: 3/2/4/3;/
+            border-radius: .1rem;
+            background: none;
+            color: var(--color-gray);
+            border: 2px solid;
+            padding: .5em;
+            font-size: 1em;
+            text-transform: uppercase;
+          
+          }
+          #submit:hover {
+            color: var(--color-pink);
+            cursor: pointer;
+          }
+    
+          
+          
+          @media (max-width: 800px) {
+            #nav-bar > ul {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              margin-bottom: .5em;
+              margin-right: 2em;
+            }
+            #pricing {
+              display: grid;
+              grid-template-columns: auto;
+              grid-template-rows: auto auto auto auto;
+              grid-gap: 30px;
+            }
+            #pricing > h2 {
+              grid-area: 1/1/2/2;
+              margin-top: 2em;
+              margin-bottom: 5px;
+              justify-self: center;
+            }
+            #small {
+              grid-area: 2/1/3/2;
+              justify-self: center;
+            }
+            #medium {
+              grid-area: 3/1/4/2;
+              justify-self: center;
+            }
+            #large {
+              grid-area: 4/1/5/2;
+              justify-self: center;
+            }
+          
+            
+            #form {
+              display: grid;
+              grid-template-columns: auto;
+              grid-template-rows: auto auto auto auto;
+              justify-items: center;
+            }
+            #email-label {
+              grid-area: 1/1/2/2;
+              margin-top: 25px;
+              justify-self: center;
+            }
+            #form > p {
+              grid-area: 2/1/3/2;
+              margin-top: -7px;
+              width: 60%;
+            }
+            .emailSubmit {
+              grid-area: 3/1/4/2;
+              text-align: center;
+              justify-self: center;
+            }
+            #email {
+              border-radius: .1rem;
+              margin-right: 5px;
+              width: 200px;
+            }
+            #submit {
+              border-radius: .1rem;
+            }
+          }
+          
+          
+   
+    </style>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
   </head>
@@ -33,7 +371,7 @@
         <p>
             Where innovation meets opportunity, let AI be your guide to limitless career horizons as you navigate the future toward unparalleled success.<br><br>As you navigate the future toward unparalleled success!
         </p>
-        <a href="form.html"><button id="browse-our-collection">Try Demo!</button></a>
+        <a href="form.html"><button  id="browse-our-collection">Try Demo!</button></a>
        </div>  
     </section>
      
