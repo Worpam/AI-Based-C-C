@@ -243,22 +243,54 @@
                 alert("User has been logged in successfully.");
             }
         }
-        let signUpForm = document.querySelector(".signup form");
-        signUpForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-            let username = event.target.elements["txt"].value;
-            let email = event.target.elements["email"].value;
-            let password = event.target.elements["pswd"].value;
-            signUp(username, email, password);
-        });
+      
 
-        let logInForm = document.querySelector(".login form");
-        logInForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-            let email = event.target.elements["email"].value;
-            let password = event.target.elements["pswd"].value;
-            logIn(email, password);
-        });
+
+
+
+let signUpForm = document.querySelector(".signup form");
+signUpForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let username = event.target.elements["txt"].value;
+    let email = event.target.elements["email"].value;
+    let password = event.target.elements["pswd"].value;
+    signUp(username, email, password);
+});
+
+let logInForm = document.querySelector(".login form");
+logInForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let email = event.target.elements["email"].value;
+    let password = event.target.elements["pswd"].value;
+    logIn(email, password);
+});
+
+function signUp(username, email, password) {
+    let userExists = users.some((user) => user.email === email);
+    if (userExists) {
+        alert("User with this email already exists.");
+    } else {
+        let user = {
+            username,
+            email,
+            password
+        };
+        users.push(user);
+        alert("User has been signed up successfully.");
+    }
+}
+
+function logIn(email, password) {
+    let user = users.find((user) => user.email === email);
+    if (!user) {
+        alert("User with this email does not exist.");
+    } else if (user.password !== password) {
+        alert("Incorrect password.");
+    } else {
+        alert("User has been logged in successfully.");
+        window.location.href = "https://aaryaninvincible.github.io/AI-Based-C-C/";
+    }
+}
         </script>
         
 
