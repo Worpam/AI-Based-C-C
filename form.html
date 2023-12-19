@@ -1,9 +1,18 @@
+
+
+
+
+
+
+
+
 <?php
 // PHP code to process the form will go here
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigation Bar</title>
@@ -151,6 +160,99 @@
 
  
 
+
+
+
+
+    body {
+        font-size: 16px;
+    }
+
+    /* Set the background color for the form */
+    form {
+        background-color: #f7f7f7;
+        padding: 20px;
+        max-width: 600px;
+        margin: 20px auto;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Style the input fields */
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    /* Style the radio buttons */
+    input[type="radio"] {
+        margin: 5px 0;
+    }
+
+    /* Style the submit button */
+    input[type="submit"] {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    /* Add a hover effect to the submit button */
+    input[type="submit"]:hover {
+        color: #fff;
+        background-color: #0056b3;
+    }
+
+    /* Add your styles here */
+    .recommendation {
+        display: inline-block;
+        margin: 5px;
+        padding: 8px;
+        background-color: #007BFF;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    .recommendation:hover {
+        background-color: #0056b3;
+    }
+
+    .score-input {
+        margin-top: 10px;
+    }
+
+
+    /* Add your styles here */
+    .checkbox-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .checkbox-label input {
+        margin-right: 5px;
+    }
+
+    .checkbox-label.selected {
+        color: #fff;
+        background-color: #007BFF;
+    }
     </style>
 </head>
 
@@ -163,13 +265,6 @@
             </div>
         </div>
 
-        <!--  <div class="field">
-            <label class="label" for="goals">Goals</label>
-            <div class="control">
-                <input class="input" type="text" id="goals" name="goals" placeholder="E.g., Become a doctor">
-            </div>
-        </div>
- -->
 
         <div class="field">
             <label class="label" for="goals">Goals</label>
@@ -183,24 +278,7 @@
 
 
 
-        <!--   <div class="field">
-            <label class="label" for="skill">Skill</label>
-            <div class="control">
-                <input class="input" type="text" id="skill" name="skill" list="suggestions" multiple>
-                <datalist id="suggestions">
-                    <option value="Software Development">
-                    <option value="Front-End Development">
-                    <option value="Node.js">
-                    <option value="AngularJS">
-                    <option value="Java">
-                    <option value="HTML5">
-                    <option value="Object-Oriented Programming">
-                    <option value="Programming">
-                    <option value="Web Application Development">
-                    <option value="Adobe Illustrator">
-                </datalist>
-            </div>
-        </div> -->
+   
 
 
         <div class="field">
@@ -273,58 +351,7 @@
 
 
 
-        <!--   <div class="field">
-            <label class="label" for="competition_exam">Competition Exam</label>
-            <div class="control">
-                <input class="input" type="text" id="competition_exam" name="competition_exam"
-                    placeholder="E.g., JEE, NEET">
-            </div>
-        </div> -->
-        <!--  <div class="field">
-            <label class="label" for="competition_exam">Competition Exam</label>
-            <div class="control">
-                <select id="competition_exam" name="competition_exam" multiple size="11">
-                    <optgroup label="Engineering">
-                        <option value="JEE Main">JEE Main</option>
-                        <option value="JEE Advanced">JEE Advanced</option>
-                        <option value="BITSAT">BITSAT</option>
-                    </optgroup>
-                    <optgroup label="Medical">
-                        <option value="NEET">NEET</option>
-                    </optgroup>
-                    <optgroup label="Law">
-                        <option value="CLAT">CLAT</option>
-                    </optgroup>
-                    <optgroup label="Management">
-                        <option value="CAT">CAT</option>
-                        <option value="XAT">XAT</option>
-                    </optgroup>
-                    <optgroup label="Architecture">
-                        <option value="NATA">NATA</option>
-                    </optgroup>
-                    <optgroup label="Design">
-                        <option value="NID Entrance Exam">NID Entrance Exam</option>
-                        <option value="UCEED">UCEED</option>
-                    </optgroup>
-                    <optgroup label="Commerce">
-                        <option value="CA Foundation">CA Foundation</option>
-                        <option value="CMA Foundation">CMA Foundation</option>
-                    </optgroup>
-                    <optgroup label="Science">
-                        <option value="KVPY">KVPY</option>
-                    </optgroup>
-                </select>
-            </div>
-        </div> -->
-        <!-- 
-        <div class="field">
-            <label class="label" for="competition_exam">Competition Exam</label>
-            <div class="control">
-                <input class="input" type="text" id="competition_exam" name="competition_exam"
-                    placeholder="E.g., JEE, NEET">
-            </div>
-            <div class="recommendations"></div>
-        </div> -->
+   
         <div class="field">
             <label class="label" for="competition_exam">Competition Exam</label>
             <div class="control">
@@ -334,6 +361,25 @@
             <div class="recommendations"></div>
         </div>
 
+        <form method="post" action="process_form.php">
+            <!-- Other fields -->
+            <div class="field">
+                <label class="label" for="achievements">Achievements</label>
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" id="achievements_yes" name="achievements" value="yes">
+                        Yes
+                    </label>
+                    <label class="radio">
+                        <input type="radio" id="achievements_no" name="achievements" value="no">
+                        No
+                    </label>
+                </div>
+            </div>
+    
+            <div class="achievements-field"></div>
+
+
         <div class="field is-grouped">
             <div class="control">
                 <input class="button is-link" type="submit" value="Submit">
@@ -341,6 +387,13 @@
             </div>
         </div>
     </form>
+
+
+
+
+
+
+    
 
     <script>
     $(document).ready(function() {
@@ -364,7 +417,6 @@
             }
         });
     });
-
     function handleExamInput(examName) {
         var recommendationsContainer = document.querySelector('.recommendations');
 
@@ -389,37 +441,7 @@
             document.querySelector('.recommendations').innerHTML = '';
         }
     });
-    /*   document.getElementById('competition_exam').addEventListener('input', function(e) {
-          var value = e.target.value.toLowerCase();
-          var recommendations = document.getElementById('competition_exam').nextElementSibling;
-
-          if (value.length > 0) {
-              var availableExams = [
-                  'JEE Main', 'JEE Advanced', 'BITSAT', 'NEET', 'CLAT', 'CAT', 'XAT', 'NATA',
-                  'NID Entrance Exam', 'UCEED', 'CA Foundation', 'CMA Foundation', 'KVPY'
-              ];
-
-              var filteredExams = availableExams.filter(function(exam) {
-                  return exam.toLowerCase().indexOf(value) !== -1;
-              });
-
-              recommendations.innerHTML = '';
-
-              if (filteredExams.length > 0) {
-                  filteredExams.forEach(function(exam) {
-                      var option = document.createElement('div');
-                      option.textContent = exam;
-                      option.addEventListener('click', function() {
-                          e.target.value = exam;
-                          recommendations.innerHTML = '';
-                      });
-                      recommendations.appendChild(option);
-                  });
-              }
-          } else {
-              recommendations.innerHTML = '';
-          }
-      }); */
+    
 
     // Sample dynamic recommendations (you can fetch these from a server)
     var recommendations = ["Software Engineer", "Graphic Designer", "Data Scientist", "Teacher"];
@@ -467,6 +489,27 @@
 
                 inputField.value = selectedSkills.join(', ');
             }
+        });
+
+        $(document).ready(function () {
+            $('input[type="radio"]').click(function () {
+                var inputValue = $(this).attr("value");
+                $(".achievements-field").empty();
+                if (inputValue === "yes") {
+                    $(".achievements-field").append('<div class="field">' +
+                        '<label class="label" for="achievement_description">Achievement Description</label>' +
+                        '<div class="control">' +
+                        '<input class="input" type="text" id="achievement_description" name="achievement_description" placeholder="Enter achievement description">' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="field">' +
+                        '<label class="label" for="achievement_date">Achievement Date</label>' +
+                        '<div class="control">' +
+                        '<input class="input" type="date" id="achievement_date" name="achievement_date">' +
+                        '</div>' +
+                        '</div>');
+                }
+            });
         });
 
         
