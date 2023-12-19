@@ -105,6 +105,48 @@
     #chk:checked~.signup label {
         transform: scale(.6);
     }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav {
+        background-color: #6d44b8;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+
     </style>
     <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
@@ -144,15 +186,21 @@
     </head>
 
     <body>
+        
         <div class="main">
             <input type="checkbox" id="chk" aria-hidden="true" />
-
+            <nav>
+                <a href="https://aaryaninvincible.github.io/AI-Based-C-C/">Home</a>
+                <a href="#">Report</a>
+                <a href="#">Demo</a>
+            </nav>
             <div class="signup">
                 <form>
                     <label for="chk" aria-hidden="true">Sign up</label>
                     <input type="text" name="txt" placeholder="User name" required="" />
                     <input type="email" name="email" placeholder="Email" required="" />
                     <input type="password" name="pswd" placeholder="Password" required="" />
+
                     <button>Sign up</button>
                 </form>
             </div>
@@ -166,6 +214,7 @@
                 </form>
             </div>
         </div>
+       
         <script>
         let users = [];
 
@@ -211,9 +260,14 @@
             logIn(email, password);
         });
         </script>
+        
+
     </body>
 
     </html>
 </body>
 
 </html>
+
+
+
