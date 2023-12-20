@@ -1,512 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>studentform</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Bar</title>
+    <!-- Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js"></script>
+
     <style>
-        /* Add your styles here */
+        /* Style for the navigation */
+        
         body {
+            background: #ffffff;
+            color: black;
             font-family: Arial, sans-serif;
             margin: 0;
+            font-size: 16px;
             padding: 0;
         }
-
+        
         nav {
-            background-color: #007BFF;
+            background-color: #007bff;
             color: #fff;
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
         }
-
+        
         nav a {
             color: #fff;
             text-decoration: none;
             margin: 0 10px;
             transition: color 0.3s ease;
         }
-
+        
         nav a:hover {
             color: #fff;
             text-decoration: underline;
         }
+        
+        form {
+            background-color: #f7f7f7;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        /* Style the input fields */
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        /* Style the input fields */
+        
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .field {
+            margin-bottom: 20px;
+        }
+        
+        .label {
+            font-weight: bold;
+        }
+        
+        .input,
+        .textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .checkbox-label {
+            margin-right: 20px;
+        }
+        /* Style for the submit button */
+        
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+            background-color: #0056b3;
+        }
+        
+        .recommendation {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        .recommendation:hover {
+            background-color: #0056b3;
+        }
+        
+        .score-input {
+            margin-top: 10px;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .checkbox-label input {
+            margin-right: 5px;
+        }
+        
+        .checkbox-label.selected {
+            color: #fff;
+            background-color: #007bff;
+        }
     </style>
 </head>
-<body>
 
+<body>
     <nav>
         <a href="https://aaryaninvincible.github.io/AI-Based-C-C/">Home</a>
         <a href="#">Report</a>
-       
     </nav>
-
-    <!-- Your content goes here -->
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-    /* Set a default font size for the body */
-    body {
-        font-size: 16px;
-    }
-
-    /* Set the background color for the form */
-    form {
-        background-color: #f7f7f7;
-        padding: 20px;
-        max-width: 600px;
-        margin: 20px auto;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Style the input fields */
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        box-sizing: border-box;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    /* Style the radio buttons */
-    input[type="radio"] {
-        margin: 5px 0;
-    }
-
-    /* Style the submit button */
-    input[type="submit"] {
-        background-color: #007BFF;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 18px;
-    }
-
-    /* Add a hover effect to the submit button */
-    input[type="submit"]:hover {
-        color: #fff;
-        background-color: #0056b3;
-    }
-
-    /* Add your styles here */
-    .recommendation {
-        display: inline-block;
-        margin: 5px;
-        padding: 8px;
-        background-color: #007BFF;
-        color: #fff;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        outline: none;
-    }
-
-    .recommendation:hover {
-        background-color: #0056b3;
-    }
-
-    .score-input {
-        margin-top: 10px;
-    }
-
-
-    /* Add your styles here */
-    .checkbox-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .checkbox-label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .checkbox-label input {
-        margin-right: 5px;
-    }
-
-    .checkbox-label.selected {
-        color: #fff;
-        background-color: #007BFF;
-    }
-
- 
-
-
-
-
-
-    body {
-        font-size: 16px;
-    }
-
-    /* Set the background color for the form */
-    form {
-        background-color: #f7f7f7;
-        padding: 20px;
-        max-width: 600px;
-        margin: 20px auto;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Style the input fields */
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        box-sizing: border-box;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    /* Style the radio buttons */
-    input[type="radio"] {
-        margin: 5px 0;
-    }
-
-    /* Style the submit button */
-    input[type="submit"] {
-        background-color: #007BFF;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 18px;
-    }
-
-    /* Add a hover effect to the submit button */
-    input[type="submit"]:hover {
-        color: #fff;
-        background-color: #0056b3;
-    }
-
-    /* Add your styles here */
-    .recommendation {
-        display: inline-block;
-        margin: 5px;
-        padding: 8px;
-        background-color: #007BFF;
-        color: #fff;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        outline: none;
-    }
-
-    .recommendation:hover {
-        background-color: #0056b3;
-    }
-
-    .score-input {
-        margin-top: 10px;
-    }
-
-
-    /* Add your styles here */
-    .checkbox-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .checkbox-label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .checkbox-label input {
-        margin-right: 5px;
-    }
-
-    .checkbox-label.selected {
-        color: #fff;
-        background-color: #007BFF;
-    }
-    </style>
-</head>
-
-<body>
     <form method="post" action="process_form.php">
         <div class="field">
             <label class="label" for="interest">Interest</label>
             <div class="control">
-                <input class="input" type="text" id="interest" name="interest" placeholder="E.g., Science, Arts">
+                <input class="input" type="text" id="interest" name="interest" placeholder="E.g., Science, Arts" />
             </div>
         </div>
-
-
         <div class="field">
             <label class="label" for="goals">Goals</label>
             <div class="control">
-                <input class="input" type="text" id="goals" name="goals" placeholder="E.g., Become a doctor">
+                <input class="input" type="text" id="goals" name="goals" placeholder="E.g., Become a doctor" />
             </div>
             <div id="dynamic-recommendations">
-                <!-- Dynamic recommendations will be added here -->
+                <label>Recommendations:</label><br />
+                <label><input type="checkbox" value="Software Engineer" /> Software
+                    Engineer</label>
+                <label><input type="checkbox" value="Graphic Designer" /> Graphic
+                    Designer</label>
+                <label><input type="checkbox" value="Data Scientist" /> Data
+                    Scientist</label>
+                <label><input type="checkbox" value="Teacher" /> Teacher</label>
             </div>
         </div>
-
-
-
-   
-
-
         <div class="field">
-        <label class="label" for="skill">Skills</label>
+            <label class="label" for="skill">Skills</label>
+            <input class="input" type="text" id="skill" name="skill" readonly />
+        </div>
         <div class="control">
             <div class="checkbox-container">
                 <label class="checkbox-label">
-                    <input type="checkbox" value="Software Development">
-                    Software Development
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" value="Front-End Development">
-                    Front-End Development
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" value="Node.js">
-                    Node.js
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" value="AngularJS">
-                    AngularJS
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" value="Java">
-                    Java
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" value="HTML5">
-                    HTML5
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" value="Object-Oriented Programming">
-                    Object-Oriented Programming
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" value="Programming">
-                    Programming
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" value="Web Application Development">
-                    Web Application Development
-                </label>
-                <label class="checkbox-label">
-                    <input type="checkbox" value="Adobe Illustrator">
-                    Adobe Illustrator
-                </label>
-                <!-- Add more checkboxes as needed -->
+                        <input type="checkbox" value="Software Development" />Software
+                        Development</label>
 
-                <!-- Add more checkboxes as needed -->
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Software Development" />Software
+                        Development</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Front-End Development" />Front-End
+                        Development</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Node.js" />Node.js</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="AngularJS" />AngularJS</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Java" />Java</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="HTML5" />
+                        HTML5
+                    </label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Object-Oriented Programming" />
+                        Object-Oriented Programming
+                    </label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Programming" />
+                        Programming
+                    </label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Web Application Development" />
+                        Web Application Development
+                    </label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Adobe Illustrator" />
+                        Adobe Illustrator
+                    </label>
+
             </div>
-            <input class="input" type="text" id="skill" name="skill" readonly>
-        </div>
-    </div>
-
-        <div class="field">
-            <label class="label" for="we">Work Experience</label>
-            <div class="control">
-                <label class="radio">
-                    <input type="radio" id="we_yes" name="we" value="yes">
-                    Yes
-                </label>
-                <label class="radio">
-                    <input type="radio" id="we_no" name="we" value="no">
-                    No
-                </label>
+            <br>
+            <div class="field">
+                <label class="label" for="work_experience">Work Experience</label>
+                <div class="control">
+                    <label class="radio">
+                            <input type="radio" id="work_experience_yes"
+                                name="work_experience" value="yes" />
+                            Yes
+                        </label>
+                    <label class="radio">
+                            <input type="radio" id="work_experience_no"
+                                name="work_experience" value="no" />
+                            No
+                        </label>
+                </div>
             </div>
-        </div>
+            <div class="work-experience-field"></div>
 
-        <div class="we_field"></div>
-
-
-
-   
-        <div class="field">
-            <label class="label" for="competition_exam">Competition Exam</label>
-            <div class="control">
-                <input class="input" type="text" id="competition_exam" name="competition_exam"
-                    placeholder="E.g., JEE, NEET" oninput="handleExamInput(this.value)">
-            </div>
-            <div class="recommendations"></div>
-        </div>
-
-        <form method="post" action="process_form.php">
-            <!-- Other fields -->
             <div class="field">
                 <label class="label" for="achievements">Achievements</label>
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" id="achievements_yes" name="achievements" value="yes">
-                        Yes
-                    </label>
+                            <input type="radio" id="achievements_yes"
+                                name="achievements" value="yes" />
+                            Yes
+                        </label>
                     <label class="radio">
-                        <input type="radio" id="achievements_no" name="achievements" value="no">
-                        No
-                    </label>
+                            <input type="radio" id="achievements_no"
+                                name="achievements" value="no" />
+                            No
+                        </label>
                 </div>
             </div>
-    
             <div class="achievements-field"></div>
 
-
-        <div class="field is-grouped">
-            <div class="control">
-                <input class="button is-link" type="submit" value="Submit">
-
+            <div class="field">
+                <label class="label" for="competition_exam">Competition Exam</label>
+                <div class="control">
+                    <input class="input" type="text" id="competition_exam" name="competition_exam" placeholder="E.g., JEE, NEET" oninput="handleExamInput(this.value)" />
+                </div>
+                <div class="recommendations"></div>
             </div>
-        </div>
+            <br><br>
+            <!-- Other form fields here -->
+            <div class="field is-grouped">
+                <div class="control">
+                    <input class="button is-link" type="submit" value="Submit" />
+                </div>
+            </div>
     </form>
-
-
-
-
-
-
-    
-
     <script>
-    $(document).ready(function() {
-        $('input[type="radio"]').click(function() {
-            var inputValue = $(this).attr("value");
-            $(".we_field")
-                .empty(); // Add this line to empty the we_field div before appending new fields
-            if (inputValue === "yes") {
-                $(".we_field").append('<div class="field">' +
-                    '<label class="label" for="work_type">What kind of work experience do you have?</label>' +
-                    '<div class="control">' +
-                    '<input class="input" type="text" id="work_type" name="work_type" placeholder="Work Type">' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="field">' +
-                    '<label class="label" for="work_description">Provide a brief description of your work experience</label>' +
-                    '<div class="control">' +
-                    '<textarea class="textarea" id="work_description" name="work_description" placeholder="Work Description"></textarea>' +
-                    '</div>' +
-                    '</div>');
-            }
-        });
-    });
-    function handleExamInput(examName) {
-        var recommendationsContainer = document.querySelector('.recommendations');
-
-        // Clear previous recommendations and score input
-        recommendationsContainer.innerHTML = '';
-
-        // If examName is not 'none', append a score input field
-        if (examName.toLowerCase() !== 'none') {
-            var scoreInput = document.createElement('input');
-            scoreInput.classList.add('input', 'score-input');
-            scoreInput.type = 'text';
-            scoreInput.placeholder = 'Enter score for ' + examName;
-            recommendationsContainer.appendChild(scoreInput);
-        }
-    }
-
-    // Add an event listener to handle input deletion
-    document.getElementById('competition_exam').addEventListener('input', function() {
-        var examInputValue = this.value.trim().toLowerCase();
-        if (examInputValue === '') {
-            // If input is empty, clear recommendations and score input
-            document.querySelector('.recommendations').innerHTML = '';
-        }
-    });
-    
-
-    // Sample dynamic recommendations (you can fetch these from a server)
-    var recommendations = ["Software Engineer", "Graphic Designer", "Data Scientist", "Teacher"];
-
-    // Function to populate dynamic recommendations
-    function populateRecommendations() {
-        var recommendationsContainer = document.getElementById('dynamic-recommendations');
-
-        // Clear previous recommendations
-        recommendationsContainer.innerHTML = '';
-
-        // Add recommendations to the container
-        recommendations.forEach(function(recommendation) {
-            var recommendationElement = document.createElement('button');
-            recommendationElement.classList.add('recommendation');
-            recommendationElement.textContent = recommendation;
-            recommendationElement.addEventListener('click', function() {
-                document.getElementById('goals').value = recommendation;
-            });
-            recommendationsContainer.appendChild(recommendationElement);
-        });
-    }
-
-    // Populate recommendations on page load
-    populateRecommendations();
-
-    document.addEventListener('DOMContentLoaded', function () {
-            var checkboxes = document.querySelectorAll('.checkbox-label input');
-            var inputField = document.getElementById('skill');
-
-            checkboxes.forEach(function (checkbox) {
-                checkbox.addEventListener('change', function () {
-                    updateSelectedSkills();
+        function handleCheckboxChange() {
+            var checkboxes = document.querySelectorAll(
+                '#dynamic-recommendations input[type="checkbox"]'
+            );
+            var selectedRecommendations = Array.from(checkboxes)
+                .filter(function(checkbox) {
+                    return checkbox.checked;
+                })
+                .map(function(checkbox) {
+                    return checkbox.value;
                 });
+            document.getElementById("goals").value =
+                selectedRecommendations.join(", ");
+        }
+
+        function handleSkillsCheckboxChange() {
+            var checkboxes = document.querySelectorAll(
+                '.checkbox-container input[type="checkbox"]'
+            );
+            var selectedSkills = Array.from(checkboxes)
+                .filter(function(checkbox) {
+                    return checkbox.checked;
+                })
+                .map(function(checkbox) {
+                    return checkbox.value;
+                });
+            document.getElementById("skill").value = selectedSkills.join(", ");
+        }
+        // Add event listeners for goals and skills checkboxes
+        var goalsCheckboxes = document.querySelectorAll(
+            '#dynamic-recommendations input[type="checkbox"]'
+        );
+        goalsCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("change", handleCheckboxChange);
+        });
+        var skillsCheckboxes = document.querySelectorAll(
+            '.checkbox-container input[type="checkbox"]'
+        );
+        skillsCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("change", handleSkillsCheckboxChange);
+        });
+        $(document).ready(function() {
+            $('input[name="work_experience"]').change(function() {
+                var inputValue = $(this).val();
+                $(".work-experience-field").empty();
+                if (inputValue === "yes") {
+                    $(".work-experience-field").append(
+                        '<div class="field">' +
+                        '<label class="label" for="work_type">What kind of work experience do you have?</label>' +
+                        '<div class="control">' +
+                        '<input class="input" type="text" id="work_type" name="work_type" placeholder="Work Type">' +
+                        "</div>" +
+                        "</div>" +
+                        '<div class="field">' +
+                        '<label class="label" for="work_description">Provide a brief description of your work experience</label>' +
+                        '<div class="control">' +
+                        '<textarea class="textarea" id="work_description" name="work_description" placeholder="Work Description"></textarea>' +
+                        "</div>" +
+                        "</div>"
+                    );
+                }
             });
 
-            function updateSelectedSkills() {
-                var selectedSkills = Array.from(checkboxes)
-                    .filter(function (checkbox) {
-                        return checkbox.checked;
-                    })
-                    .map(function (checkbox) {
-                        return checkbox.value;
-                    });
-
-                inputField.value = selectedSkills.join(', ');
-            }
-        });
-
-        $(document).ready(function () {
-            $('input[type="radio"]').click(function () {
-                var inputValue = $(this).attr("value");
+            $('input[name="achievements"]').change(function() {
+                var inputValue = $(this).val();
                 $(".achievements-field").empty();
                 if (inputValue === "yes") {
-                    $(".achievements-field").append('<div class="field">' +
+                    $(".achievements-field").append(
+                        '<div class="field">' +
                         '<label class="label" for="achievement_description">Achievement Description</label>' +
                         '<div class="control">' +
                         '<input class="input" type="text" id="achievement_description" name="achievement_description" placeholder="Enter achievement description">' +
-                        '</div>' +
-                        '</div>' +
+                        "</div>" +
+                        "</div>" +
                         '<div class="field">' +
                         '<label class="label" for="achievement_date">Achievement Date</label>' +
                         '<div class="control">' +
                         '<input class="input" type="date" id="achievement_date" name="achievement_date">' +
-                        '</div>' +
-                        '</div>');
+                        "</div>" +
+                        "</div>"
+                    );
                 }
             });
         });
+        document.getElementById("competition_exam").addEventListener("input", function() {
 
-        
+            var examInputValue = this.value.trim().toLowerCase();
+            if (examInputValue === "") {
+                // If input is empty, clear recommendations and score input
+                document.querySelector(".recommendations").innerHTML = "";
+            }
+        });
+
+        function handleExamInput(examName) {
+            var recommendationsContainer =
+                document.querySelector(".recommendations");
+
+            // Clear previous recommendations and score input
+            recommendationsContainer.innerHTML = "";
+
+            // If examName is not 'none', append a score input field
+            if (examName.toLowerCase() !== "none") {
+                var scoreInput = document.createElement("input");
+                scoreInput.classList.add("input", "score-input");
+                scoreInput.type = "text";
+                scoreInput.placeholder = "Enter score for " + examName;
+                recommendationsContainer.appendChild(scoreInput);
+            }
+        }
     </script>
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCkqXvVp0c94_49CDKKO8BB5Qg79prCz4k",
+            authDomain: "careercounclinghub.firebaseapp.com",
+            databaseURL: "https://careercounclinghub-default-rtdb.firebaseio.com",
+            projectId: "careercounclinghub",
+            storageBucket: "careercounclinghub.appspot.com",
+            messagingSenderId: "381752816613",
+            appId: "1:381752816613:web:c33143b3ce353c90cbb50c",
+            measurementId: "G-ZD9FPVN91N"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+        // Add an event listener to the form submission
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the form data
+            var formData = {
+                interest: document.getElementById("interest").value,
+                goals: document.getElementById("goals").value,
+                // Add other form fields here
+            };
+
+            // Push the form data to the Firebase real-time database
+            firebase.database().ref("studentForms").push(formData)
+                .then(function() {
+                    // Data successfully sent to Firebase
+                    alert("Form data submitted successfully!");
+                    // Reset the form
+                    document.querySelector("form").reset();
+                })
+                .catch(function(error) {
+                    // Error occurred while sending data to Firebase
+                    alert("Error submitting form data: " + error.message);
+                });
+        });
+    </script>
+
 
 </body>
 
 </html>
-
-
-
