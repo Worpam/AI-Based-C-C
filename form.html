@@ -1,441 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>studentform</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Firebase JavaScript SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js"></script>
-
+    <title>Login</title>
     <style>
-        /* Style for the navigation */
-        
         body {
-            background: #ffffff;
-            color: black;
             font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
-            font-size: 16px;
             padding: 0;
         }
         
         nav {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
+            background-color: #0099ff;
+            padding: 10px 0;
+            text-align: center;
         }
         
-        nav a {
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        
+        nav ul li a {
             color: #fff;
             text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: #fff;
-            text-decoration: underline;
-        }
-        
-        form {
-            background-color: #f7f7f7;
-            padding: 20px;
-            max-width: 600px;
-            margin: 20px auto;
+            padding: 5px 10px;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
         }
-        /* Style the input fields */
         
-        input[type="text"] {
-            width: 100%;
+        nav ul li a:hover {
+            background-color: #007acc;
+        }
+        
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #ffffff;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333333;
+        }
+        
+        label {
+            margin-top: 10px;
+            display: block;
+            color: #333333;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="submit"] {
+            width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
-            box-sizing: border-box;
-            border-radius: 5px;
             border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
-        /* Style the input fields */
         
         input[type="submit"] {
             background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        
-        .field {
-            margin-bottom: 20px;
-        }
-        
-        .label {
-            font-weight: bold;
-        }
-        
-        .input,
-        .textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            margin-top: 5px;
-        }
-        
-        .checkbox-container {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        .checkbox-label {
-            margin-right: 20px;
-        }
-        /* Style for the submit button */
-        
-        .button {
-            padding: 10px 20px;
-            background-color: #007bff;
             color: #fff;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
         }
         
-        .button:hover {
+        input[type="submit"]:hover {
             background-color: #0056b3;
         }
         
-        .recommendation {
-            display: inline-block;
-            margin: 5px;
-            padding: 8px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            outline: none;
-        }
-        
-        .recommendation:hover {
-            background-color: #0056b3;
-        }
-        
-        .score-input {
+        .back-button,
+        .forgot-password,
+        .create-account,
+        a[href="signup.html"] {
+            display: block;
+            text-align: center;
             margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
         }
         
-        .checkbox-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-        
-        .checkbox-label input {
-            margin-right: 5px;
-        }
-        
-        .checkbox-label.selected {
-            color: #fff;
-            background-color: #007bff;
+        .back-button:hover,
+        .forgot-password:hover,
+        a[href="signup.html"]:hover {
+            color: #0056b3;
         }
     </style>
 </head>
 
 <body>
     <nav>
-        <a href="https://aaryaninvincible.github.io/AI-Based-C-C/">Home</a>
-        <a href="#">Report</a>
+        <ul>
+            <li><a href="https://aaryaninvincible.github.io/AI-Based-C-C/">Home</a></li>
+            <!-- <li><a href="login.html">Login</a></li> -->
+        </ul>
     </nav>
-    <form method="post" action="process_form.php">
-        <div class="field">
-            <label class="label" for="interest">Interest</label>
-            <div class="control">
-                <input class="input" type="text" id="interest" name="interest" placeholder="E.g., Science, Arts" />
-            </div>
-        </div>
-        <div class="field">
-            <label class="label" for="goals">Goals</label>
-            <div class="control">
-                <input class="input" type="text" id="goals" name="goals" placeholder="E.g., Become a doctor" />
-            </div>
-            <div id="dynamic-recommendations">
-                <label>Recommendations:</label><br />
-                <label><input type="checkbox" value="Software Engineer" /> Software
-                    Engineer</label>
-                <label><input type="checkbox" value="Graphic Designer" /> Graphic
-                    Designer</label>
-                <label><input type="checkbox" value="Data Scientist" /> Data
-                    Scientist</label>
-                <label><input type="checkbox" value="Teacher" /> Teacher</label>
-            </div>
-        </div>
-        <div class="field">
-            <label class="label" for="skill">Skills</label>
-            <input class="input" type="text" id="skill" name="skill" readonly />
-        </div>
-        <div class="control">
-            <div class="checkbox-container">
-                <label class="checkbox-label">
-                        <input type="checkbox" value="Software Development" />Software
-                        Development</label>
-
-                <label class="checkbox-label">
-                        <input type="checkbox" value="Software Development" />Software
-                        Development</label>
-                <label class="checkbox-label">
-                        <input type="checkbox" value="Front-End Development" />Front-End
-                        Development</label>
-                <label class="checkbox-label">
-                        <input type="checkbox" value="Node.js" />Node.js</label>
-                <label class="checkbox-label">
-                        <input type="checkbox" value="AngularJS" />AngularJS</label>
-                <label class="checkbox-label">
-                        <input type="checkbox" value="Java" />Java</label>
-                <label class="checkbox-label">
-                        <input type="checkbox" value="HTML5" />
-                        HTML5
-                    </label>
-                <label class="checkbox-label">
-                        <input type="checkbox" value="Object-Oriented Programming" />
-                        Object-Oriented Programming
-                    </label>
-                <label class="checkbox-label">
-                        <input type="checkbox" value="Programming" />
-                        Programming
-                    </label>
-                <label class="checkbox-label">
-                        <input type="checkbox" value="Web Application Development" />
-                        Web Application Development
-                    </label>
-                <label class="checkbox-label">
-                        <input type="checkbox" value="Adobe Illustrator" />
-                        Adobe Illustrator
-                    </label>
-
-            </div>
-            <br>
-            <div class="field">
-                <label class="label" for="work_experience">Work Experience</label>
-                <div class="control">
-                    <label class="radio">
-                            <input type="radio" id="work_experience_yes"
-                                name="work_experience" value="yes" />
-                            Yes
-                        </label>
-                    <label class="radio">
-                            <input type="radio" id="work_experience_no"
-                                name="work_experience" value="no" />
-                            No
-                        </label>
-                </div>
-            </div>
-            <div class="work-experience-field"></div>
-
-            <div class="field">
-                <label class="label" for="achievements">Achievements</label>
-                <div class="control">
-                    <label class="radio">
-                            <input type="radio" id="achievements_yes"
-                                name="achievements" value="yes" />
-                            Yes
-                        </label>
-                    <label class="radio">
-                            <input type="radio" id="achievements_no"
-                                name="achievements" value="no" />
-                            No
-                        </label>
-                </div>
-            </div>
-            <div class="achievements-field"></div>
-
-            <div class="field">
-                <label class="label" for="competition_exam">Competition Exam</label>
-                <div class="control">
-                    <input class="input" type="text" id="competition_exam" name="competition_exam" placeholder="E.g., JEE, NEET" oninput="handleExamInput(this.value)" />
-                </div>
-                <div class="recommendations"></div>
-            </div>
-            <br><br>
-            <!-- Other form fields here -->
-            <div class="field is-grouped">
-                <div class="control">
-                    <input class="button is-link" type="submit" value="Submit" />
-                </div>
-            </div>
-    </form>
-    <script>
-        function handleCheckboxChange() {
-            var checkboxes = document.querySelectorAll(
-                '#dynamic-recommendations input[type="checkbox"]'
-            );
-            var selectedRecommendations = Array.from(checkboxes)
-                .filter(function(checkbox) {
-                    return checkbox.checked;
-                })
-                .map(function(checkbox) {
-                    return checkbox.value;
-                });
-            document.getElementById("goals").value =
-                selectedRecommendations.join(", ");
-        }
-
-        function handleSkillsCheckboxChange() {
-            var checkboxes = document.querySelectorAll(
-                '.checkbox-container input[type="checkbox"]'
-            );
-            var selectedSkills = Array.from(checkboxes)
-                .filter(function(checkbox) {
-                    return checkbox.checked;
-                })
-                .map(function(checkbox) {
-                    return checkbox.value;
-                });
-            document.getElementById("skill").value = selectedSkills.join(", ");
-        }
-        // Add event listeners for goals and skills checkboxes
-        var goalsCheckboxes = document.querySelectorAll(
-            '#dynamic-recommendations input[type="checkbox"]'
-        );
-        goalsCheckboxes.forEach(function(checkbox) {
-            checkbox.addEventListener("change", handleCheckboxChange);
-        });
-        var skillsCheckboxes = document.querySelectorAll(
-            '.checkbox-container input[type="checkbox"]'
-        );
-        skillsCheckboxes.forEach(function(checkbox) {
-            checkbox.addEventListener("change", handleSkillsCheckboxChange);
-        });
-        $(document).ready(function() {
-            $('input[name="work_experience"]').change(function() {
-                var inputValue = $(this).val();
-                $(".work-experience-field").empty();
-                if (inputValue === "yes") {
-                    $(".work-experience-field").append(
-                        '<div class="field">' +
-                        '<label class="label" for="work_type">What kind of work experience do you have?</label>' +
-                        '<div class="control">' +
-                        '<input class="input" type="text" id="work_type" name="work_type" placeholder="Work Type">' +
-                        "</div>" +
-                        "</div>" +
-                        '<div class="field">' +
-                        '<label class="label" for="work_description">Provide a brief description of your work experience</label>' +
-                        '<div class="control">' +
-                        '<textarea class="textarea" id="work_description" name="work_description" placeholder="Work Description"></textarea>' +
-                        "</div>" +
-                        "</div>"
-                    );
-                }
-            });
-
-            $('input[name="achievements"]').change(function() {
-                var inputValue = $(this).val();
-                $(".achievements-field").empty();
-                if (inputValue === "yes") {
-                    $(".achievements-field").append(
-                        '<div class="field">' +
-                        '<label class="label" for="achievement_description">Achievement Description</label>' +
-                        '<div class="control">' +
-                        '<input class="input" type="text" id="achievement_description" name="achievement_description" placeholder="Enter achievement description">' +
-                        "</div>" +
-                        "</div>" +
-                        '<div class="field">' +
-                        '<label class="label" for="achievement_date">Achievement Date</label>' +
-                        '<div class="control">' +
-                        '<input class="input" type="date" id="achievement_date" name="achievement_date">' +
-                        "</div>" +
-                        "</div>"
-                    );
-                }
-            });
-        });
-        document.getElementById("competition_exam").addEventListener("input", function() {
-
-            var examInputValue = this.value.trim().toLowerCase();
-            if (examInputValue === "") {
-                // If input is empty, clear recommendations and score input
-                document.querySelector(".recommendations").innerHTML = "";
-            }
-        });
-
-        function handleExamInput(examName) {
-            var recommendationsContainer =
-                document.querySelector(".recommendations");
-
-            // Clear previous recommendations and score input
-            recommendationsContainer.innerHTML = "";
-
-            // If examName is not 'none', append a score input field
-            if (examName.toLowerCase() !== "none") {
-                var scoreInput = document.createElement("input");
-                scoreInput.classList.add("input", "score-input");
-                scoreInput.type = "text";
-                scoreInput.placeholder = "Enter score for " + examName;
-                recommendationsContainer.appendChild(scoreInput);
-            }
-        }
-    </script>
-
-    <script>
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCkqXvVp0c94_49CDKKO8BB5Qg79prCz4k",
-            authDomain: "careercounclinghub.firebaseapp.com",
-            databaseURL: "https://careercounclinghub-default-rtdb.firebaseio.com",
-            projectId: "careercounclinghub",
-            storageBucket: "careercounclinghub.appspot.com",
-            messagingSenderId: "381752816613",
-            appId: "1:381752816613:web:c33143b3ce353c90cbb50c",
-            measurementId: "G-ZD9FPVN91N"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
-
-    <script>
-        // Add an event listener to the form submission
-        document.querySelector("form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get the form data
-            var formData = {
-                interest: document.getElementById("interest").value,
-                goals: document.getElementById("goals").value,
-                // Add other form fields here
-            };
-
-            // Push the form data to the Firebase real-time database
-            firebase.database().ref("studentForms").push(formData)
-                .then(function() {
-                    // Data successfully sent to Firebase
-                    alert("Form data submitted successfully!");
-                    // Reset the form
-                    document.querySelector("form").reset();
-                })
-                .catch(function(error) {
-                    // Error occurred while sending data to Firebase
-                    alert("Error submitting form data: " + error.message);
-                });
-        });
-    </script>
-
-
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="loginEmail" required>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+            <input type="submit" value="Login">
+        </form>
+        <a href="index.html" class="back-button">Back</a>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+        <a href="singup.html" class="create-account">Create Account</a>
+    </div>
 </body>
+<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCkqXvVp0c94_49CDKKO8BB5Qg79prCz4k",
+        authDomain: "careercounclinghub.firebaseapp.com",
+        databaseURL: "https://careercounclinghub-default-rtdb.firebaseio.com",
+        projectId: "careercounclinghub",
+        storageBucket: "careercounclinghub.appspot.com",
+        messagingSenderId: "381752816613",
+        appId: "1:381752816613:web:c33143b3ce353c90cbb50c",
+        measurementId: "G-ZD9FPVN91N"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var email = document.getElementById('loginEmail').value;
+        var password = document.getElementById('loginPassword').value;
+
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Redirect to home page after successful login
+                window.location.href = "https://aaryaninvincible.github.io/AI-Based-C-C/";
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode + ": " + errorMessage);
+            });
+    });
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Redirect to the data input form page after successful login
+            window.location.href = "form.html";
+        })
+        .catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode + ": " + errorMessage);
+        });
+</script>
 
 </html>
