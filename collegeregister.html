@@ -3,6 +3,15 @@
 
 <head>
     <title>College Registration Form</title>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <!-- Firebase Auth (the OAuth2 identity toolkit SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <!-- Google Analytics (Optional) -->
+    <script src="https://www.google-analytics.com/analytics.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -126,6 +135,57 @@
             <button type="submit">Submit Registration</button>
         </form>
     </div>
+
+    <script>
+   const firebaseConfig = {
+            apiKey: "AIzaSyCkqXvVp0c94_49CDKKO8BB5Qg79prCz4k",
+            authDomain: "careercounclinghub.firebaseapp.com",
+            databaseURL: "https://careercounclinghub-default-rtdb.firebaseio.com",
+            projectId: "careercounclinghub",
+            storageBucket: "careercounclinghub.appspot.com",
+            messagingSenderId: "381752816613",
+            appId: "1:381752816613:web:c33143b3ce353c90cbb50c",
+            measurementId: "G-ZD9FPVN91N"
+        };
+
+        // Initialize Firebase
+
+
+        firebase.initializeApp(firebaseConfig);
+
+        
+// Add an event listener to the form submission
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the form data
+    var formData = {
+        collegeName: document.getElementById("collegeName").value,
+        collegeEmail: document.getElementById("collegeEmail").value,
+        collegePhone: document.getElementById("collegePhone").value,
+        collegeDescription: document.getElementById("collegeDescription").value
+    };
+
+    // Push the form data to the Firebase Realtime Database under the "collegeregistration" node
+    firebase.database().ref("collegeregistration").push(formData)
+        .then(function() {
+            // Data successfully sent to Firebase
+            alert("Form data submitted successfully!");
+
+            // Reset the form
+            document.querySelector("form").reset();
+
+            // Redirect the user to index.html
+            window.location.href = "index.html";
+        })
+        .catch(function(error) {
+            // Error occurred while sending data to Firebase
+            alert("Error submitting form data: " + error.message);
+        });
+});
+
+        
+    </script>
 </body>
 
 </html>
