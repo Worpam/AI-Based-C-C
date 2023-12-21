@@ -10,6 +10,7 @@
     <!-- Firebase JavaScript SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
         /* Style for the navigation */
@@ -163,7 +164,8 @@
         <a href="#">Report</a>
     </nav>
     <!-- <form method="post" action="process_form.php"> -->
-    <form method="post">
+
+    <form id="studentForm" method="post">
         <div class="field">
             <label class="label" for="interest">Interest</label>
             <div class="control">
@@ -403,39 +405,32 @@
             measurementId: "G-ZD9FPVN91N"
         };
         // Initialize Firebase
+
+
         firebase.initializeApp(firebaseConfig);
 
+        // Add event listener for form submission
+        document.getElementById('studentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
 
-
-
-        document.querySelector("form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get the form data
+            // Gather form data
             var formData = {
-                interest: document.getElementById("interest").value,
-                goals: document.getElementById("goals").value,
+                interest: document.getElementById('interest').value,
+                goals: document.getElementById('goals').value,
                 // Add other form fields here
             };
 
-            // Push the form data to the Firebase Realtime Database
-            firebase.database().ref("studentForms").push(formData)
+            // Push form data to Firebase Realtime Database
+            firebase.database().ref('studentForms').push(formData)
                 .then(function() {
                     // Data successfully sent to Firebase
-                    alert("Form data submitted successfully!");
-
-                    // Reset the form
-                    document.querySelector("form").reset();
-
-                    // Clear the skills input
-                    document.getElementById("skill").value = "";
-
-                    // Redirect the user to the specified site
-                    window.location.href = 'https://aaryaninvincible.github.io/AI-Based-C-C/';
+                    alert('Form data submitted successfully!');
+                    document.getElementById('studentForm').reset(); // Reset the form
+                    document.getElementById('skill').value = ''; // Clear the skills input
                 })
                 .catch(function(error) {
                     // Error occurred while sending data to Firebase
-                    alert("Error submitting form data: " + error.message);
+                    alert('Error submitting form data: ' + error.message);
                 });
         });
     </script>
