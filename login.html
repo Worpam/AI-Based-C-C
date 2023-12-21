@@ -85,6 +85,7 @@
         
         .back-button,
         .forgot-password,
+        .create-account,
         a[href="signup.html"] {
             display: block;
             text-align: center;
@@ -119,7 +120,7 @@
         </form>
         <a href="index.html" class="back-button">Back</a>
         <a href="#" class="forgot-password">Forgot Password?</a>
-        <a href="singup.html">Create Account</a>
+        <a href="singup.html" class="create-account">Create Account</a>
     </div>
 </body>
 <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
@@ -155,6 +156,18 @@
                 console.log(errorCode + ": " + errorMessage);
             });
     });
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Redirect to the data input form page after successful login
+            window.location.href = "form.html";
+        })
+        .catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode + ": " + errorMessage);
+        });
 </script>
 
 </html>
