@@ -8,10 +8,13 @@
     <title>studentform</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Firebase JavaScript SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <!-- Firebase Auth (the OAuth2 identity toolkit SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <!-- Google Analytics (Optional) -->
+    <script src="https://www.google-analytics.com/analytics.js"></script>
     <style>
         /* Style for the navigation */
         
@@ -404,6 +407,7 @@
             appId: "1:381752816613:web:c33143b3ce353c90cbb50c",
             measurementId: "G-ZD9FPVN91N"
         };
+
         // Initialize Firebase
 
 
@@ -417,6 +421,7 @@
             var formData = {
                 interest: document.getElementById('interest').value,
                 goals: document.getElementById('goals').value,
+                skils: document.getElementById('skill').value,
                 // Add other form fields here
             };
 
