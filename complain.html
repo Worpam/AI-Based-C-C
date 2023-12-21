@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <!-- Firebase Auth (the OAuth2 identity toolkit SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <!-- Google Analytics (Optional) -->
+    <script src="https://www.google-analytics.com/analytics.js"></script>
     <title>College Reporting Form</title>
     <style>
-   
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
@@ -57,12 +66,16 @@
             margin-bottom: 20px;
         }
         
-        label, select, button {
+        label,
+        select,
+        button {
             margin-bottom: 10px;
             display: block;
         }
         
-        #collegeSelect, #feedbackSelect, #description {
+        #collegeSelect,
+        #feedbackSelect,
+        #description {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
@@ -85,8 +98,8 @@
         button:hover {
             background-color: #1a82d0;
         }
-        
         /* Media query for responsiveness */
+        
         @media screen and (max-width: 600px) {
             .container {
                 position: static;
@@ -95,8 +108,9 @@
         }
     </style>
 </head>
+
 <body>
-      <nav>
+    <nav>
         <ul>
             <li><a href="https://aaryaninvincible.github.io/AI-Based-C-C/">Home</a></li>
             <!-- <li><a href="login.html">Login</a></li> -->
@@ -112,7 +126,7 @@
                 <option value="college2">College 2</option>
                 <option value="college3">College 3</option>
             </select>
-            
+
             <label for="feedbackSelect">Select Feedback Type:</label>
             <select id="feedbackSelect" name="feedbackSelect">
                 <option value="">--Please choose a feedback type--</option>
@@ -120,12 +134,54 @@
                 <option value="facilities">Facilities</option>
                 <option value="support">Support</option>
             </select>
-            
+
             <label for="description">Description:</label>
             <textarea id="description" name="description" rows="4" cols="50"></textarea>
-            
+
             <button type="submit">Submit Report</button>
         </form>
     </div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCkqXvVp0c94_49CDKKO8BB5Qg79prCz4k",
+            authDomain: "careercounclinghub.firebaseapp.com",
+            databaseURL: "https://careercounclinghub-default-rtdb.firebaseio.com",
+            projectId: "careercounclinghub",
+            storageBucket: "careercounclinghub.appspot.com",
+            messagingSenderId: "381752816613",
+            appId: "1:381752816613:web:c33143b3ce353c90cbb50c",
+            measurementId: "G-ZD9FPVN91N"
+        };
+
+        // Initialize Firebase
+
+
+        firebase.initializeApp(firebaseConfig);
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const collegeSelect = document.getElementById('collegeSelect').value;
+                const feedbackSelect = document.getElementById('feedbackSelect').value;
+                const description = document.getElementById('description').value;
+
+                // Reference to the 'collegeReports' node
+                const reportsRef = firebase.database().ref('collegeReports');
+
+                // Push data to the database
+                reportsRef.push({
+                    collegeSelect: collegeSelect,
+                    feedbackSelect: feedbackSelect,
+                    description: description
+                });
+
+                // Clear form fields after submission
+                form.reset();
+            });
+        });
+    </script>
 </body>
+
 </html>
