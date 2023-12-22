@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Development Aptitude Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="softwareDevAptitudeForm">
+        <h2>Software Development Aptitude Test</h2>
+
+        <label>1. What does CSS stand for?</label>
+        <br>
+        <input type="radio" name="q1" value="cascadingsheets"> Cascading Sheets<br>
+        <input type="radio" name="q1" value="computersciencesyntax"> Computer Science Syntax<br>
+        <input type="radio" name="q1" value="cascadingstyle"> Cascading Style Sheets<br>
+
+        <label>2. Which programming language is used for building dynamic web pages?</label>
+        <br>
+        <input type="radio" name="q2" value="java"> Java<br>
+        <input type="radio" name="q2" value="php"> PHP<br>
+        <input type="radio" name="q2" value="javascript"> JavaScript<br>
+
+        <label>3. What is the purpose of Git in software development?</label>
+        <br>
+        <input type="radio" name="q3" value="versioncontrol"> Version control<br>
+        <input type="radio" name="q3" value="database"> Database management<br>
+        <input type="radio" name="q3" value="webserver"> Web server configuration<br>
+
+        <label>4. Which data structure is used to organize data in a Last In, First Out (LIFO) manner?</label>
+        <br>
+        <input type="radio" name="q4" value="queue"> Queue<br>
+        <input type="radio" name="q4" value="stack"> Stack<br>
+        <input type="radio" name="q4" value="linkedlist"> Linked List<br>
+
+        <label>5. What is the purpose of SQL in database management?</label>
+        <br>
+        <input type="radio" name="q5" value="querylanguage"> Query language for databases<br>
+        <input type="radio" name="q5" value="programminglanguage"> Programming language for web development<br>
+        <input type="radio" name="q5" value="markuplanguage"> Markup language for documents<br>
+
+        <label>6. Which method is used to iterate over elements in an array in JavaScript?</label>
+        <br>
+        <input type="radio" name="q6" value="forin"> for...in loop<br>
+        <input type="radio" name="q6" value="foreach"> forEach method<br>
+        <input type="radio" name="q6" value="while"> while loop<br>
+
+        <label>7. What is the purpose of the "alt" attribute in HTML image tags?</label>
+        <br>
+        <input type="radio" name="q7" value="alignment"> Image alignment<br>
+        <input type="radio" name="q7" value="alternative"> Alternative text for screen readers<br>
+        <input type="radio" name="q7" value="animation"> Image animation<br>
+
+        <label>8. In object-oriented programming, what is encapsulation?</label>
+        <br>
+        <input type="radio" name="q8" value="datahiding"> Data hiding within a class<br>
+        <input type="radio" name="q8" value="inheritance"> Inheriting properties from another class<br>
+        <input type="radio" name="q8" value="polymorphism"> Ability to take multiple forms<br>
+
+        <label>9. What is the role of a constructor in Java?</label>
+        <br>
+        <input type="radio" name="q9" value="initialization"> Initializing an object<br>
+        <input type="radio" name="q9" value="destruction"> Destroying an object<br>
+        <input type="radio" name="q9" value="sorting"> Sorting elements in an array<br>
+
+        <label>10. Which HTTP status code represents a successful response?</label>
+        <br>
+        <input type="radio" name="q10" value="200"> 200 OK<br>
+        <input type="radio" name="q10" value="404"> 404 Not Found<br>
+        <input type="radio" name="q10" value="500"> 500 Internal Server Error<br>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+    <script>
+        document.getElementById("softwareDevAptitudeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Calculate score (you can modify this based on correct answers)
+            var score = 0;
+            var answers = {
+                q1: "cascadingstyle",
+                q2: "javascript",
+                q3: "versioncontrol",
+                q4: "stack",
+                q5: "querylanguage",
+                q6: "foreach",
+                q7: "alternative",
+                q8: "datahiding",
+                q9: "initialization",
+                q10: "200"
+            };
+
+            for (var question in answers) {
+                var selectedAnswer = document.querySelector('input[name="' + question + '"]:checked');
+                if (selectedAnswer && selectedAnswer.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            // Set passing score (you can modify this)
+            var passingScore = 4;
+
+            // Check if the user passed or failed
+            if (score >= passingScore) {
+                // Redirect to the success page
+                window.location.href = "ROADMAP.html";
+            } else {
+                // Show alert and allow user to try again
+                alert("You failed the software development aptitude test. Please try again.");
+                window.location.href = "newf.html";
+
+                // Optionally, you can redirect to another page for a retry
+                // window.location.href = "retry.html";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
