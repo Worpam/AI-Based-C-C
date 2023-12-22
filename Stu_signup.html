@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Signup Form</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
         }
-         nav {
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
             background-color: #0099ff;
             padding: 10px 0;
             text-align: center;
@@ -43,8 +45,11 @@
         nav ul li a:hover {
             background-color: #007acc;
         }
-        .container {
+        
+        form {
             max-width: 300px;
+            margin: 80px auto 0;
+            /* Adjust margin-top to make space for the fixed nav bar */
             background-color: #fff;
             padding: 20px;
             border-radius: 5px;
@@ -63,7 +68,7 @@
         
         button {
             background-color: #007bff;
-            /* Changed to blue color */
+            /* Blue color */
             color: white;
             padding: 10px 15px;
             border: none;
