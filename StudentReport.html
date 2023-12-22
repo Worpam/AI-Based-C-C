@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Report Form</title>
+    <style>
+        /* Nav bar styles */
+        
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav ul li {
+            display: inline;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        /* Form styles */
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <!-- Firebase Auth (the OAuth2 identity toolkit SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <!-- Google Analytics (Optional) -->
+    <script src="https://www.google-analytics.com/analytics.js"></script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li id="dateTime"></li>
+        </ul>
+    </nav>
+    <h1>Student Report Form</h1>
+    <form id="studentReportForm">
+        <div class="form-group">
+            <label for="collegeSelect">Select College:</label>
+            <select id="collegeSelect" name="college">
+        <option value="">Select College</option>
+        <option value="college1">College 1</option>
+        <option value="college2">College 2</option>
+        <option value="college3">College 3</option>
+      </select>
+        </div>
+        <div class="form-group">
+            <label for="typeSelect">Type Selection:</label>
+            <select id="typeSelect" name="typeSelection">
+        <option value="true">True/Positive</option>
+        <option value="false">False/Negative</option>
+      </select>
+        </div>
+        <div class="form-group">
+            <label for="feedbackType">Feedback Type:</label>
+            <select id="feedbackType" name="feedbackType">
+        <option value="100%">100% Placement</option>
+        <option value="NIT Faculty">NIT Faculty</option>
+        <option value="24/7 High Speed Network">24/7 High Speed Network</option>
+      </select>
+        </div>
+        <div class="form-group">
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" placeholder="Enter your feedback here"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCkqXvVp0c94_49CDKKO8BB5Qg79prCz4k",
+            authDomain: "careercounclinghub.firebaseapp.com",
+            databaseURL: "https://careercounclinghub-default-rtdb.firebaseio.com",
+            projectId: "careercounclinghub",
+            storageBucket: "careercounclinghub.appspot.com",
+            messagingSenderId: "381752816613",
+            appId: "1:381752816613:web:c33143b3ce353c90cbb50c",
+            measurementId: "G-ZD9FPVN91N"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Get a reference to the form
+        const form = document.getElementById('studentReportForm');
+
+        // Listen for form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            const college = form.elements['college'].value;
+            const typeSelection = form.elements['typeSelection'].value;
+            const feedbackType = form.elements['feedbackType'].value;
+            const feedback = form.elements['feedback'].value;
+
+            // Save data to Firebase Realtime Database under 'studentreports' node
+            database.ref('studentreports').push({
+                    college,
+                    typeSelection,
+                    feedbackType,
+                    feedback
+                })
+                .then(() => {
+                    // Reset the form after successful submission
+                    form.reset();
+                    alert('Form submitted successfully!');
+                })
+                .catch((error) => {
+                    console.error('Error writing to Firebase Database: ', error);
+                    alert('An error occurred. Please try again later.');
+                });
+        });
+
+        // Update date and time in the nav bar
+        const dateTimeElement = document.getElementById('dateTime');
+
+        function updateDateTime() {
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            dateTimeElement.textContent = dateTimeString;
+        }
+        updateDateTime(); // Update immediately
+        setInterval(updateDateTime, 1000); // Update every second
+    </script>
+</body>
+
+</html>
