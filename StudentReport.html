@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Report Form</title>
     <style>
-        /* Nav bar styles */
+        /* CSS styles */
         
         nav {
             background-color: #007bff;
@@ -77,6 +77,8 @@
             background-color: #0056b3;
         }
     </style>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Firebase JavaScript SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
@@ -89,12 +91,7 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li id="dateTime"></li>
-        </ul>
-    </nav>
+    <!-- HTML content -->
     <h1>Student Report Form</h1>
     <form id="studentReportForm">
         <div class="form-group">
@@ -127,10 +124,7 @@
         </div>
         <button type="submit">Submit</button>
     </form>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
     <script>
-        // Initialize Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCkqXvVp0c94_49CDKKO8BB5Qg79prCz4k",
             authDomain: "careercounclinghub.firebaseapp.com",
@@ -142,7 +136,11 @@
             measurementId: "G-ZD9FPVN91N"
         };
 
+        // Initialize Firebase
+
+
         firebase.initializeApp(firebaseConfig);
+
         const database = firebase.database();
 
         // Get a reference to the form
@@ -158,12 +156,13 @@
             const feedbackType = form.elements['feedbackType'].value;
             const feedback = form.elements['feedback'].value;
 
-            // Save data to Firebase Realtime Database under 'studentreports' node
-            database.ref('studentreports').push({
+            // Save data to Firebase Realtime Database under 'collegeReports' node
+            database.ref('collegeReports').push({
                     college,
                     typeSelection,
                     feedbackType,
-                    feedback
+                    feedback,
+                    timestamp: firebase.database.ServerValue.TIMESTAMP // Optional: Include a timestamp
                 })
                 .then(() => {
                     // Reset the form after successful submission
@@ -175,18 +174,12 @@
                     alert('An error occurred. Please try again later.');
                 });
         });
-
-        // Update date and time in the nav bar
-        const dateTimeElement = document.getElementById('dateTime');
-
-        function updateDateTime() {
-            const now = new Date();
-            const dateTimeString = now.toLocaleString();
-            dateTimeElement.textContent = dateTimeString;
-        }
-        updateDateTime(); // Update immediately
-        setInterval(updateDateTime, 1000); // Update every second
     </script>
 </body>
 
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
