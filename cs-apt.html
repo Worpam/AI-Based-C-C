@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Computer Science Quiz</title>
+    <style>
+    body {
+        font-family: "Arial", sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    #quiz-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    #quiz-form {
+        margin-top: 20px;
+    }
+
+    .question {
+        margin-bottom: 20px;
+    }
+
+    button {
+        background-color: #003af8;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #003af8;
+    }
+
+    #result-container {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+    <h1>Computer Science Quiz</h1>
+    <form id="quiz-form">
+        <div class="question">
+        <p>1. What does HTML stand for?</p>
+        <label
+            ><input type="radio" name="q1" value="a" /> Hyper Text Markup
+            Language</label
+        >
+        <label
+            ><input type="radio" name="q1" value="b" /> Hyperlink and Text
+            Markup Language</label
+        >
+        <label
+            ><input type="radio" name="q1" value="c" /> High Text Markup
+            Language</label
+        >
+        <label
+            ><input type="radio" name="q1" value="d" /> Hyper Transfer Markup
+            Language</label
+        >
+        </div>
+
+        <div class="question">
+        <p>
+            2. Which programming language is known as the "mother of all
+            languages"?
+        </p>
+        <label><input type="radio" name="q2" value="a" /> C++</label>
+        <label><input type="radio" name="q2" value="b" /> Fortran</label>
+        <label><input type="radio" name="q2" value="c" /> Assembly</label>
+        <label><input type="radio" name="q2" value="d" /> COBOL</label>
+        </div>
+        <div class="question">
+        <p>3. What is the main purpose of an operating system?</p>
+        <label
+            ><input type="radio" name="q3" value="a" /> Manage hardware
+            resources</label
+        >
+        <label><input type="radio" name="q3" value="b" /> Play games</label>
+        <label
+            ><input type="radio" name="q3" value="c" /> Create documents</label
+        >
+        <label
+            ><input type="radio" name="q3" value="d" /> Browse the
+            internet</label
+        >
+        </div>
+
+        <div class="question">
+        <p>4. In web development, what does CSS stand for?</p>
+        <label
+            ><input type="radio" name="q4" value="a" /> Computer Style
+            Sheets</label
+        >
+        <label
+            ><input type="radio" name="q4" value="b" /> Creative Style
+            Sheets</label
+        >
+        <label
+            ><input type="radio" name="q4" value="c" /> Cascading Style
+            Sheets</label
+        >
+        <label
+            ><input type="radio" name="q4" value="d" /> Colorful Style
+            Sheets</label
+        >
+        </div>
+
+        <div class="question">
+        <p>5. What is the purpose of SQL in a database?</p>
+        <label
+            ><input type="radio" name="q5" value="a" /> Secure Query
+            Language</label
+        >
+        <label
+            ><input type="radio" name="q5" value="b" /> Simple Question
+            Language</label
+        >
+        <label
+            ><input type="radio" name="q5" value="c" /> Structured Query
+            Language</label
+        >
+        <label
+            ><input type="radio" name="q5" value="d" /> Sequential Question
+            Language</label
+        >
+        </div>
+
+        <div class="question">
+        <p>6. What does the acronym "HTTP" stand for in web development?</p>
+        <label
+            ><input type="radio" name="q6" value="a" /> HyperText Transfer
+            Protocol</label
+        >
+        <label
+            ><input type="radio" name="q6" value="b" /> High Transfer Text
+            Protocol</label
+        >
+        <label
+            ><input type="radio" name="q6" value="c" /> Hyper Transfer Text
+            Protocol</label
+        >
+        <label
+            ><input type="radio" name="q6" value="d" /> HighText Transfer
+            Protocol</label
+        >
+        </div>
+
+        <div class="question">
+        <p>7. What is the purpose of a "for loop" in programming?</p>
+        <label
+            ><input type="radio" name="q7" value="a" /> Repeat a specific block
+            of code a known number of times</label
+        >
+        <label
+            ><input type="radio" name="q7" value="b" /> Declare a
+            variable</label
+        >
+        <label
+            ><input type="radio" name="q7" value="c" /> Define a function</label
+        >
+        <label
+            ><input type="radio" name="q7" value="d" /> Perform mathematical
+            calculations</label
+        >
+        </div>
+
+        <div class="question">
+        <p>8. What is the purpose of the "if statement" in programming?</p>
+        <label
+            ><input type="radio" name="q8" value="a" /> Perform a specific
+            action based on a condition</label
+        >
+        <label
+            ><input type="radio" name="q8" value="b" /> Define a variable</label
+        >
+        <label
+            ><input type="radio" name="q8" value="c" /> Create a loop</label
+        >
+        <label
+            ><input type="radio" name="q8" value="d" /> Print output to the
+            console</label
+        >
+        </div>
+
+        <div class="question">
+        <p>9. What is the purpose of a "database index"?</p>
+        <label
+            ><input type="radio" name="q9" value="a" /> Speed up data retrieval
+            operations</label
+        >
+        <label
+            ><input type="radio" name="q9" value="b" /> Create backup copies of
+            data</label
+        >
+        <label
+            ><input type="radio" name="q9" value="c" /> Encrypt sensitive
+            information</label
+        >
+        <label
+            ><input type="radio" name="q9" value="d" /> Manage user
+            authentication</label
+        >
+        </div>
+
+        <div class="question">
+        <p>
+            10. What is the primary function of the "git" version control
+            system?
+        </p>
+        <label
+            ><input type="radio" name="q10" value="a" /> Track changes in source
+            code</label
+        >
+        <label
+            ><input type="radio" name="q10" value="b" /> Optimize database
+            performance</label
+        >
+        <label
+            ><input type="radio" name="q10" value="c" /> Manage project
+            timelines</label
+        >
+        <label
+            ><input type="radio" name="q10" value="d" /> Generate random
+            numbers</label
+        >
+        </div>
+
+        <div class="question">
+        <p>
+            11. What is the purpose of the "try...catch" statement in
+            programming?
+        </p>
+        <label
+            ><input type="radio" name="q11" value="a" /> Handle exceptions and
+            errors</label
+        >
+        <label
+            ><input type="radio" name="q11" value="b" /> Define a
+            function</label
+        >
+        <label
+            ><input type="radio" name="q11" value="c" /> Perform mathematical
+            calculations</label
+        >
+        <label
+            ><input type="radio" name="q11" value="d" /> Create a loop</label
+        >
+        </div>
+
+        <div class="question">
+        <p>12. In networking, what does the acronym "LAN" stand for?</p>
+        <label
+            ><input type="radio" name="q12" value="a" /> Large Area
+            Network</label
+        >
+        <label
+            ><input type="radio" name="q12" value="b" /> Local Area
+            Network</label
+          >
+          <label
+            ><input type="radio" name="q12" value="c" /> Linked Access
+            Network</label
+          >
+          <label
+            ><input type="radio" name="q12" value="d" /> Longitudinal Array
+            Network</label
+          >
+        </div>
+
+        <div class="question">
+        <p>
+            13. What is the purpose of the "ELSE" statement in conditional
+            programming?
+        </p>
+        <label
+            ><input type="radio" name="q13" value="a" /> Execute a block of code
+            if the condition is false</label
+        >
+        <label
+            ><input type="radio" name="q13" value="b" /> Combine different data
+            types</label
+        >
+        <label
+            ><input type="radio" name="q13" value="c" /> Bundling data and
+            methods that operate on the data</label
+        >
+        <label
+            ><input type="radio" name="q13" value="d" /> Creating a private
+            class</label
+        >
+        </div>
+
+        <div class="question">
+        <p>
+            14. What does the acronym "TCP/IP" stand for in computer networking?
+        </p>
+        <label
+            ><input type="radio" name="q14" value="a" /> Transmission Control
+            Protocol/Internet Protocol</label
+        >
+        <label
+            ><input type="radio" name="q14" value="b" /> Total Control
+            Process/Internet Protocol</label
+        >
+        <label
+            ><input type="radio" name="q14" value="c" /> Technical Control
+            Protocol/Internet Process</label
+        >
+        <label
+            ><input type="radio" name="q14" value="d" /> Transmission Control
+            Process/Internet Protocol</label
+        >
+        </div>
+
+        <div class="question">
+        <p>15. What is the purpose of a firewall in computer security?</p>
+        <label
+            ><input type="radio" name="q15" value="a" /> Speed up internet
+            connection</label
+        >
+        <label
+            ><input type="radio" name="q15" value="b" /> Monitor keyboard
+            input</label
+        >
+        <label
+            ><input type="radio" name="q15" value="c" /> Protect against
+            unauthorized access</label
+        >
+        <label
+            ><input type="radio" name="q15" value="d" /> Enhance graphics
+            performance</label
+        >
+        </div>
+
+        <div class="question">
+        <p>16. What is the purpose of the "break" statement in a loop?</p>
+        <label
+            ><input type="radio" name="q16" value="a" /> Terminate the loop and
+            exit</label
+        >
+        <label
+            ><input type="radio" name="q16" value="b" /> Start a new loop
+            iteration</label
+        >
+        <label
+            ><input type="radio" name="q16" value="c" /> Skip the next code
+            block</label
+        >
+        <label
+            ><input type="radio" name="q16" value="d" /> Add a delay to the
+            loop</label
+        >
+        </div>
+
+        <div class="question">
+        <p>17. What is the purpose of the "void" keyword in JavaScript?</p>
+        <label
+            ><input type="radio" name="q17" value="a" /> Declare a
+            variable</label
+        >
+        <label
+            ><input type="radio" name="q17" value="b" /> Define a
+            function</label
+        >
+        <label
+            ><input type="radio" name="q17" value="c" /> Prevent a function from
+            returning a value</label
+        >
+        <label
+            ><input type="radio" name="q17" value="d" /> Allow a function to
+            return multiple values</label
+        >
+        </div>
+
+        <div class="question">
+        <p>18. What does the term "API" stand for?</p>
+        <label
+            ><input type="radio" name="q18" value="a" /> Application Programming
+            Interface</label
+        >
+        <label
+            ><input type="radio" name="q18" value="b" /> Advanced Programming
+            Interface</label
+        >
+        <label
+            ><input type="radio" name="q18" value="c" /> Automated Programming
+            Interface</label
+        >
+        <label
+            ><input type="radio" name="q18" value="d" /> Application Process
+            Interface</label
+        >
+        </div>
+
+        <div class="question">
+        <p>19. In computer science, what is an algorithm?</p>
+        <label
+            ><input type="radio" name="q19" value="a" /> A step-by-step
+            procedure for solving a problem</label
+        >
+        <label
+            ><input type="radio" name="q19" value="b" /> A type of programming
+            language</label
+        >
+        <label
+            ><input type="radio" name="q19" value="c" /> A hardware
+            component</label
+        >
+        <label
+            ><input type="radio" name="q19" value="d" /> An operating
+            system</label
+        >
+        </div>
+
+        <div class="question">
+        <p>20. What is the purpose of the "DNS" in networking?</p>
+        <label
+            ><input type="radio" name="q20" value="a" /> Resolve domain names to
+            IP addresses</label
+        >
+        <label
+            ><input type="radio" name="q20" value="b" /> Encrypt data
+            transmission</label
+        >
+        <label
+            ><input type="radio" name="q20" value="c" /> Monitor network
+            traffic</label
+        >
+        <label
+            ><input type="radio" name="q20" value="d" /> Manage email
+            communication</label
+        >
+        </div>
+
+        <button type="button" onclick="submitQuiz()">Submit</button>
+    </form>
+    <div id="result-container"></div>
+    <script>
+        function submitQuiz() {
+                const quizForm = document.getElementById('quiz-form');
+                const resultContainer = document.getElementById('result-container');
+                const correctAnswers = {
+                q1: 'a',
+                q2: 'd',
+                q3: 'a',
+                q4: 'c',
+                q5: 'c',
+                q6: 'a',
+                q7: 'a',
+                q8: 'a',
+                q9: 'a',
+                q10: 'a',
+                q11: 'a',
+                q12: 'b',
+                q13: 'a',
+                q14: 'a',
+                q15: 'c',
+                q16: 'a',
+                q17: 'c',
+                q18: 'a',
+                q19: 'a',
+                q20: 'a',
+
+                let score = 0;
+
+                for (const question in correctAnswers) {
+                    const selectedOption = document.querySelector(input[name="${question}"]:checked);
+                    if (selectedOption) {
+                        const userAnswer = selectedOption.value;
+                        if (userAnswer === correctAnswers[question]) {
+                            score++;
+                        }
+                    }
+                }
+
+                const totalQuestions = Object.keys(correctAnswers).length;
+                const resultText = You scored ${score} out of ${totalQuestions}.;
+                resultContainer.innerHTML = resultText;
+            }
+    </script>
+    </div>
+
+    //
+    <script src="script.js"></script>
+</body>
+</html>

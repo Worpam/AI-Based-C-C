@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Electrical Engineering Quiz</title>
+    <style>body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .quiz-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .question {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+    
+    input[type="radio"] {
+        margin-right: 8px;
+    }
+    
+    button {
+        margin-top: 20px;
+    }
+    
+    #result-container {
+        margin-top: 30px;
+        font-size: 18px;
+        color: #333;
+        text-align: center;
+    }
+    
+    @media (max-width: 600px) {
+        .quiz-container {
+            width: 90%;
+        }
+    
+        .question {
+            padding: 12px;
+        }
+    
+        label {
+            margin-top: 8px;
+        }
+    
+        button {
+            margin-top: 16px;
+        }
+    
+        #result-container {
+            font-size: 16px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h1>Electrical Engineering Quiz</h1>
+        <div class="question">
+            <p>1. What is the unit of electrical resistance?</p>
+            <label><input type="radio" name="q1" value="a"> Volt</label>
+            <label><input type="radio" name="q1" value="b"> Ampere</label>
+            <label><input type="radio" name="q1" value="c"> Ohm</label>
+            <label><input type="radio" name="q1" value="d"> Watt</label>
+        </div>
+
+<div class="question">
+    <p>2. What does the acronym AC stand for in electrical engineering?</p>
+    <label><input type="radio" name="q11" value="a"> Alternating Current</label>
+    <label><input type="radio" name="q11" value="b"> Analog Circuit</label>
+    <label><input type="radio" name="q11" value="c"> Amplitude Control</label>
+    <label><input type="radio" name="q11" value="d"> Automatic Control</label>
+</div>
+
+<div class="question">
+    <p>3. What is the SI unit of electrical power?</p>
+    <label><input type="radio" name="q12" value="a"> Volt</label>
+    <label><input type="radio" name="q12" value="b"> Watt</label>
+    <label><input type="radio" name="q12" value="c"> Ampere-hour</label>
+    <label><input type="radio" name="q12" value="d"> Ohm</label>
+</div>
+
+<div class="question">
+    <p>4. In a resistor color code, what does the color red represent?</p>
+    <label><input type="radio" name="q13" value="a"> 1</label>
+    <label><input type="radio" name="q13" value="b"> 10</label>
+    <label><input type="radio" name="q13" value="c"> 100</label>
+    <label><input type="radio" name="q13" value="d"> 1000</label>
+</div>
+
+<div class="question">
+    <p>5. What is the function of a diode in an electrical circuit?</p>
+    <label><input type="radio" name="q14" value="a"> Store electrical energy</label>
+    <label><input type="radio" name="q14" value="b"> Amplify signals</label>
+    <label><input type="radio" name="q14" value="c"> Control voltage levels</label>
+    <label><input type="radio" name="q14" value="d"> Allow current flow in one direction</label>
+</div>
+
+<div class="question">
+    <p>6. What is the purpose of a capacitor in an electronic circuit?</p>
+    <label><input type="radio" name="q15" value="a"> Generate magnetic fields</label>
+    <label><input type="radio" name="q15" value="b"> Store and release electrical energy</label>
+    <label><input type="radio" name="q15" value="c"> Control temperature</label>
+    <label><input type="radio" name="q15" value="d"> Measure resistance</label>
+</div>
+
+<div class="question">
+    <p>7. What is the primary function of a transformer in an electrical system?</p>
+    <label><input type="radio" name="q16" value="a"> Convert AC to DC</label>
+    <label><input type="radio" name="q16" value="b"> Control current flow</label>
+    <label><input type="radio" name="q16" value="c"> Change voltage levels</label>
+    <label><input type="radio" name="q16" value="d"> Store electrical energy</label>
+</div>
+
+<div class="question">
+    <p>8. Which law describes the relationship between voltage, current, and resistance in a circuit?</p>
+    <label><input type="radio" name="q17" value="a"> Newton's Law</label>
+    <label><input type="radio" name="q17" value="b"> Ohm's Law</label>
+    <label><input type="radio" name="q17" value="c"> Kepler's Law</label>
+    <label><input type="radio" name="q17" value="d"> Boyle's Law</label>
+</div>
+
+<div class="question">
+    <p>9. What is the purpose of a relay in an electrical circuit?</p>
+    <label><input type="radio" name="q18" value="a"> Store electrical energy</label>
+    <label><input type="radio" name="q18" value="b"> Control the flow of electrons</label>
+    <label><input type="radio" name="q18" value="c"> Amplify signals</label>
+    <label><input type="radio" name="q18" value="d"> Control a high-power circuit with a low-power signal</label>
+</div>
+
+<div class="question">
+    <p>10. What does the term "grounding" refer to in electrical systems?</p>
+    <label><input type="radio" name="q19" value="a"> Connecting to the earth</label>
+    <label><input type="radio" name="q19" value="b"> Generating electrical power</label>
+    <label><input type="radio" name="q19" value="c"> Shielding from electromagnetic fields</label>
+    <label><input type="radio" name="q19" value="d"> Storing electrical charge</label>
+</div>
+
+<div class="question">
+    <p>11. What is the role of a circuit breaker in an electrical system?</p>
+    <label><input type="radio" name="q20" value="a"> Generate electrical signals</label>
+    <label><input type="radio" name="q20" value="b"> Control voltage levels</label>
+    <label><input type="radio" name="q20" value="c"> Interrupt the flow of current in case of a fault</label>
+    <label><input type="radio" name="q20" value="d"> Convert DC to AC</label>
+</div>
+
+<div class="question">
+    <p>12. What is the function of a thermocouple in a temperature measurement system?</p>
+    <label><input type="radio" name="q21" value="a"> Convert mechanical energy to electrical energy</label>
+    <label><input type="radio" name="q21" value="b"> Measure electrical resistance</label>
+    <label><input type="radio" name="q21" value="c"> Generate heat</label>
+    <label><input type="radio" name="q21" value="d"> Measure temperature based on voltage</label>
+</div>
+
+<div class="question">
+    <p>13. In a three-phase power system, what is the phase angle between two adjacent phases?</p>
+    <label><input type="radio" name="q22" value="a"> 60 degrees</label>
+    <label><input type="radio" name="q22" value="b"> 90 degrees</label>
+    <label><input type="radio" name="q22" value="c"> 120 degrees</label>
+    <label><input type="radio" name="q22" value="d"> 180 degrees</label>
+</div>
+
+<div class="question">
+    <p>14. What is the purpose of a Varistor in an electrical circuit?</p>
+    <label><input type="radio" name="q23" value="a"> Control voltage levels</label>
+    <label><input type="radio" name="q23" value="b"> Store electrical energy</label>
+    <label><input type="radio" name="q23" value="c"> Protect against overvoltage</label>
+    <label><input type="radio" name="q23" value="d"> Measure current flow</label>
+</div>
+
+<div class="question">
+    <p>15. What does the term "EMF" stand for in electrical engineering?</p>
+    <label><input type="radio" name="q24" value="a"> Electrical Magnetic Field</label>
+    <label><input type="radio" name="q24" value="b"> Electromotive Force</label>
+    <label><input type="radio" name="q24" value="c"> Electrical Motor Function</label>
+    <label><input type="radio" name="q24" value="d"> Energy Movement Force</label>
+</div>
+
+<div class="question">
+    <p>16. Which electrical component is commonly used for signal amplification in electronic circuits?</p>
+    <label><input type="radio" name="q25" value="a"> Diode</label>
+    <label><input type="radio" name="q25" value="b"> Resistor</label>
+    <label><input type="radio" name="q25" value="c"> Transistor</label>
+    <label><input type="radio" name="q25" value="d"> Capacitor</label>
+</div>
+
+<div class="question">
+    <p>17. What is the purpose of a zener diode in an electrical circuit?</p>
+    <label><input type="radio" name="q26" value="a"> Rectify AC signals</label>
+    <label><input type="radio" name="q26" value="b"> Control voltage levels</label>
+    <label><input type="radio" name="q26" value="c"> Amplify signals</label>
+    <label><input type="radio" name="q26" value="d"> Generate magnetic fields</label>
+</div>
+
+<div class="question">
+    <p>18. What does the term "PID" stand for in control systems?</p>
+    <label><input type="radio" name="q27" value="a"> Proportional-Integral-Derivative</label>
+    <label><input type="radio" name="q27" value="b"> Power Isolation Device</label>
+    <label><input type="radio" name="q27" value="c"> Pulse Inverter Device</label>
+    <label><input type="radio" name="q27" value="d"> Parallel Integrated Drive</label>
+</div>
+
+<div class="question">
+    <p>19. What is the primary function of a rectifier in power electronics?</p>
+    <label><input type="radio" name="q28" value="a"> Generate AC signals</label>
+    <label><input type="radio" name="q28" value="b"> Store electrical energy</label>
+    <label><input type="radio" name="q28" value="c"> Convert AC to DC</label>
+    <label><input type="radio" name="q28" value="d"> Control current flow</label>
+</div>
+
+<div class="question">
+    <p>20. In electrical power transmission, what is the purpose of a step-up transformer?</p>
+    <label><input type="radio" name="q29" value="a"> Increase voltage for long-distance transmission</label>
+    <label><input type="radio" name="q29" value="b"> Reduce voltage for distribution</label>
+    <label><input type="radio" name="q29" value="c"> Convert DC to AC</label>
+    <label><input type="radio" name="q29" value="d"> Store electrical energy</label>
+</div>
+
+
+        <button onclick="calculateScore()">Submit Answers</button>
+        <div id="result-container"></div>
+        <script>
+
+            const correctAnswers = {
+                q1: 'c',
+                q2: 'a',
+                q3: 'b',
+                q4: 'a',
+                q5: 'd',
+                q6: 'b',
+                q7: 'c',
+                q8: 'b',
+                q9: 'd',
+                q10: 'a',
+                q11: 'c',
+                q12: 'd',
+                q13: 'a',
+                q14: 'c',
+                q15: 'b',
+                q16: 'c',
+                q17: 'b',
+                q18: 'a',
+                q19: 'c',
+                q20: 'a',
+            
+            };
+            
+        function calculateScore() {
+            let score = 0;
+        
+            for (let i = 1; i <= 20; i++) {
+                const selectedAnswer = document.querySelector(input[name="q${i}"]:checked);
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === correctAnswers[q${i}]) {
+                        score++;
+                    }
+                }
+            }
+        
+            const resultContainer = document.getElementById('result-container');
+            resultContainer.innerHTML = Your score is ${score} out of 20.;
+        }
+        </script>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

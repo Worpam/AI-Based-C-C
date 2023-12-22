@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="quiz.js" defer></script>
+    <title>Mechanical Engineering Quiz</title>
+    <style>body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #quiz-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    
+    #quiz-form {
+        margin-top: 20px;
+    }
+    
+    .question {
+        margin-bottom: 20px;
+    }
+    
+    button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
+    
+    #result-container {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+</style>    
+</head>
+
+<body>
+    <div id="quiz-container">
+        <h1>Mechanical Engineering Quiz</h1>
+        <form id="quiz-form">
+
+            <div class="question">
+                <p>1. What is the SI unit of force?</p>
+                <label><input type="radio" name="q1" value="a"> Newton</label>
+                <label><input type="radio" name="q1" value="b"> Pascal</label>
+                <label><input type="radio" name="q1" value="c"> Joule</label>
+                <label><input type="radio" name="q1" value="d"> Watt</label>
+            </div>
+
+            <div class="question">
+                <p>2. What is the first law of thermodynamics also known as?</p>
+                <label><input type="radio" name="q2" value="a"> Law of Entropy</label>
+                <label><input type="radio" name="q2" value="b"> Law of Conservation of Energy</label>
+                <label><input type="radio" name="q2" value="c"> Boyle's Law</label>
+                <label><input type="radio" name="q2" value="d"> Charles's Law</label>
+            </div>
+
+            <div class="question">
+                <p>3. Which material has the highest melting point?</p>
+                <label><input type="radio" name="q3" value="a"> Copper</label>
+                <label><input type="radio" name="q3" value="b"> Tungsten</label>
+                <label><input type="radio" name="q3" value="c"> Aluminum</label>
+                <label><input type="radio" name="q3" value="d"> Silver</label>
+            </div>
+
+            <div class="question">
+                <p>4. What is the primary function of a lathe machine?</p>
+                <label><input type="radio" name="q4" value="a"> Drilling holes</label>
+                <label><input type="radio" name="q4" value="b"> Turning cylindrical objects</label>
+                <label><input type="radio" name="q4" value="c"> Milling</label>
+                <label><input type="radio" name="q4" value="d"> Grinding</label>
+            </div>
+
+            <div class="question">
+                <p>5. Which law of thermodynamics states that the total entropy of an isolated system can never decrease?</p>
+                <label><input type="radio" name="q5" value="a"> Zeroth Law</label>
+                <label><input type="radio" name="q5" value="b"> First Law</label>
+                <label><input type="radio" name="q5" value="c"> Second Law</label>
+                <label><input type="radio" name="q5" value="d"> Third Law</label>
+            </div>
+
+            <div class="question">
+                <p>6. What is the modulus of elasticity?</p>
+                <label><input type="radio" name="q6" value="a"> Stress/Strain</label>
+                <label><input type="radio" name="q6" value="b"> Force/Area</label>
+                <label><input type="radio" name="q6" value="c"> Strain/Stress</label>
+                <label><input type="radio" name="q6" value="d"> Area/Force</label>
+            </div>
+
+            <div class="question">
+                <p>7. What is the purpose of a gearbox in a vehicle?</p>
+                <label><input type="radio" name="q7" value="a"> Increase speed</label>
+                <label><input type="radio" name="q7" value="b"> Decrease speed</label>
+                <label><input type="radio" name="q7" value="c"> Change torque</label>
+                <label><input type="radio" name="q7" value="d"> Change direction</label>
+            </div>
+
+            <div class="question">
+                <p>8. Which metal is the best conductor of electricity?</p>
+                <label><input type="radio" name="q8" value="a"> Copper</label>
+                <label><input type="radio" name="q8" value="b"> Aluminum</label>
+                <label><input type="radio" name="q8" value="c"> Gold</label>
+                <label><input type="radio" name="q8" value="d"> Silver</label>
+            </div>
+
+            <div class="question">
+                <p>9. What is the purpose of a flywheel in an engine?</p>
+                <label><input type="radio" name="q9" value="a"> Increase fuel efficiency</label>
+                <label><input type="radio" name="q9" value="b"> Store energy</label>
+                <label><input type="radio" name="q9" value="c"> Cool the engine</label>
+                <label><input type="radio" name="q9" value="d"> Increase torque</label>
+            </div>
+
+            <div class="question">
+                <p>10. Which law of thermodynamics states that energy cannot be created or destroyed, only converted from one form to another?</p>
+                <label><input type="radio" name="q10" value="a"> Zeroth Law</label>
+                <label><input type="radio" name="q10" value="b"> First Law</label>
+                <label><input type="radio" name="q10" value="c"> Second Law</label>
+                <label><input type="radio" name="q10" value="d"> Third Law</label>
+            </div>
+
+            <div class="question">
+                <p>11. Which mechanism is used in a reciprocating air compressor?</p>
+                <label><input type="radio" name="q11" value="a"> Rotary motion
+                    <label><input type="radio" name="q12" value="a"> Store hydraulic fluid</label>
+                    <label><input type="radio" name="q12" value="b"> Increase pressure in a hydraulic system</label>
+                    <label><input type="radio" name="q12" value="c"> Measure fluid flow rate</label>
+                    <label><input type="radio" name="q12" value="d"> Control temperature in a hydraulic system</label>
+                </div>
+    
+                <div class="question">
+                    <p>13. Which material is commonly used for gears due to its high wear resistance?</p>
+                    <label><input type="radio" name="q13" value="a"> Aluminum</label>
+                    <label><input type="radio" name="q13" value="b"> Brass</label>
+                    <label><input type="radio" name="q13" value="c"> Cast iron</label>
+                    <label><input type="radio" name="q13" value="d"> Steel</label>
+                </div>
+    
+                <div class="question">
+                    <p>14. What type of stress is responsible for causing a material to elongate or compress?</p>
+                    <label><input type="radio" name="q14" value="a"> Torsional stress</label>
+                    <label><input type="radio" name="q14" value="b"> Shear stress</label>
+                    <label><input type="radio" name="q14" value="c"> Axial stress</label>
+                    <label><input type="radio" name="q14" value="d"> Volumetric stress</label>
+                </div>
+    
+                <div class="question">
+                    <p>15. In the context of fluid mechanics, what does Bernoulli's principle state?</p>
+                    <label><input type="radio" name="q15" value="a"> Pressure increases with velocity</label>
+                    <label><input type="radio" name="q15" value="b"> Velocity increases with pressure</label>
+                    <label><input type="radio" name="q15" value="c"> Pressure is constant along a streamline</label>
+                    <label><input type="radio" name="q15" value="d"> The sum of pressure and kinetic energy is constant</label>
+                </div>
+    
+                <div class="question">
+                    <p>16. What is the purpose of a shock absorber in a vehicle?</p>
+                    <label><input type="radio" name="q16" value="a"> Increase ride comfort</label>
+                    <label><input type="radio" name="q16" value="b"> Reduce fuel consumption</label>
+                    <label><input type="radio" name="q16" value="c"> Enhance steering performance</label>
+                    <label><input type="radio" name="q16" value="d"> Improve braking efficiency</label>
+                </div>
+    
+                <div class="question">
+                    <p>17. Which law of thermodynamics states that heat energy cannot spontaneously flow from a colder location to a hotter location?</p>
+                    <label><input type="radio" name="q17" value="a"> Zeroth Law</label>
+                    <label><input type="radio" name="q17" value="b"> First Law</label>
+                    <label><input type="radio" name="q17" value="c"> Second Law</label>
+                    <label><input type="radio" name="q17" value="d"> Third Law</label>
+                </div>
+    
+                <div class="question">
+                    <p>18. Which type of brake system uses hydraulic pressure to transmit force?</p>
+                    <label><input type="radio" name="q18" value="a"> Drum brakes</label>
+                    <label><input type="radio" name="q18" value="b"> Disc brakes</label>
+                    <label><input type="radio" name="q18" value="c"> Mechanical brakes</label>
+                    <label><input type="radio" name="q18" value="d"> Electromagnetic brakes</label>
+                </div>
+    
+                <div class="question">
+                    <p>19. What is the purpose of a governor in an engine?</p>
+                    <label><input type="radio" name="q19" value="a"> Control fuel injection</label>
+                    <label><input type="radio" name="q19" value="b"> Regulate engine speed</label>
+                    <label><input type="radio" name="q19" value="c"> Adjust valve timing</label>
+                    <label><input type="radio" name="q19" value="d"> Manage exhaust emissions</label>
+                </div>
+    
+                <div class="question">
+                    <p>20. Which law of thermodynamics defines the concept of absolute zero temperature?</p>
+                    <label><input type="radio" name="q20" value="a"> Zeroth Law</label>
+                    <label><input type="radio" name="q20" value="b"> First Law</label>
+                    <label><input type="radio" name="q20" value="c"> Second Law</label>
+                    <label><input type="radio" name="q20" value="d"> Third Law</label>
+                </div>
+    
+                <button type="button" onclick="submitQuiz()">Submit</button>
+            </form>
+            <div id="result-container"></div>
+            <script>function submitQuiz() {
+                const quizForm = document.getElementById('quiz-form');
+                const resultContainer = document.getElementById('result-container');
+            
+                const correctAnswers = {
+                    q1: 'a',
+                    q2: 'b',
+                    q3: 'b',
+                    q4: 'b',
+                    q5: 'c',
+                    q6: 'a',
+                    q7: 'c',
+                    q8: 'd',
+                    q9: 'b',
+                    q10: 'b',
+                    q11: 'c',
+                    q12: 'b',
+                    q13: 'd',
+                    q14: 'c',
+                    q15: 'd',
+                    q16: 'a',
+                    q17: 'c',
+                    q18: 'a',
+                    q19: 'b',
+                    q20: 'a'
+                };
+            
+                let score = 0;
+            
+                for (let i = 1; i <= Object.keys(correctAnswers).length; i++) {
+                    const questionName = 'q' + i;
+                    const selectedOption = quizForm[questionName].value;
+            
+                    if (selectedOption === correctAnswers[questionName]) {
+                        score++;
+                    }
+                }
+            
+                resultContainer.innerHTML = <p>Your score is: ${score} out of ${Object.keys(correctAnswers).length}</p>;
+            }
+            </script>
+        </div>
+    </body>
+    
+    </html>
