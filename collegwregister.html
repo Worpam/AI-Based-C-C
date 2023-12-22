@@ -1,86 +1,184 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>College Registration Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institution Registration Form</title>
     <style>
+        /* Add your custom styles here */
+        
         body {
-            background-color: #f5f5f5;
             font-family: Arial, sans-serif;
         }
         
-        .container {
-            max-width: 600px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            position: absolute;
-            top: 25%;
-            left: 35%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        h1 {
+            text-align: center;
         }
         
-        h1 {
-            color: #2196f3;
+        .form-group {
             margin-bottom: 20px;
         }
         
-        label, input, button {
-            margin-bottom: 10px;
+        label {
             display: block;
+            margin-bottom: 5px;
         }
         
-        #collegeName, #collegeEmail, #collegePhone, #collegeDescription {
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        select,
+        textarea {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: #f8f8f8;
-            color: #444;
-        }
-        
-        button {
-            background-color: #2196f3;
-            color: #fff;
             padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
             font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        select {
+            appearance: none;
+            /* Remove default arrow icon for select */
+            padding-right: 30px;
+            /* Add space for custom arrow icon */
+            background-image: url('arrow-down.png');
+            /* Add custom arrow icon */
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+        
+        input[type="text"][name="customFacility"] {
+            display: none;
+            /* Hide the custom facility input by default */
             margin-top: 10px;
+            /* Add margin to separate from select */
         }
         
-        button:hover {
-            background-color: #1a82d0;
+        .blue-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
         }
         
-        /* Media query for responsiveness */
-        @media screen and (max-width: 600px) {
-            .container {
-                position: static;
-                margin: 20px;
-            }
+        .blue-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>College Registration Form</h1>
-        <form action="/submit-registration" method="post">
+    <h1>Institution Registration Form</h1>
+    <form id="institutionRegistrationForm">
+        <div class="form-group">
             <label for="collegeName">College Name:</label>
-            <input id="collegeName" name="collegeName" type="text" required>
-            
-            <label for="collegeEmail">College Email:</label>
-            <input id="collegeEmail" name="collegeEmail" type="email" required>
-            
-            <label for="collegePhone">College Phone:</label>
-            <input id="collegePhone" name="collegePhone" type="tel" required>
-            
-            <label for="collegeDescription">College Description:</label>
-            <textarea id="collegeDescription" name="collegeDescription" rows="4" cols="50" required></textarea>
-            
-            <button type="submit">Submit Registration</button>
-        </form>
-    </div>
+            <input type="text" id="collegeName" name="collegeName" required>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="facilitiesProvided">Facilities Provided:</label>
+            <select id="facilitiesProvided" name="facilitiesProvided">
+        <option value="">Select Facilities</option>
+        <option value="100% Placement">100% Placement</option>
+        <option value="NIT Faculty">NIT Faculty</option>
+        <option value="24/7 High Speed Network">24/7 High Speed Network</option>
+        <option value="custom">Add Custom Facility</option> <!-- Option to add custom facility -->
+      </select>
+            <input type="text" id="customFacility" name="customFacility" placeholder="Enter custom facility" style="display: none;">
+            <!-- Input for custom facility -->
+        </div>
+        <button type="submit" class="blue-button">Submit</button>
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <!-- Firebase Auth (the OAuth2 identity toolkit SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <!-- Google Analytics (Optional) -->
+    <script src="https://www.google-analytics.com/analytics.js"></script>
+
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCkqXvVp0c94_49CDKKO8BB5Qg79prCz4k",
+            authDomain: "careercounclinghub.firebaseapp.com",
+            databaseURL: "https://careercounclinghub-default-rtdb.firebaseio.com",
+            projectId: "careercounclinghub",
+            storageBucket: "careercounclinghub.appspot.com",
+            messagingSenderId: "381752816613",
+            appId: "1:381752816613:web:c33143b3ce353c90cbb50c",
+            measurementId: "G-ZD9FPVN91N"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Get a reference to the form
+        const form = document.getElementById('institutionRegistrationForm');
+
+        // Listen for form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            const collegeName = form.elements['collegeName'].value;
+            const phoneNumber = form.elements['phoneNumber'].value;
+            const email = form.elements['email'].value;
+            let facilitiesProvided = form.elements['facilitiesProvided'].value;
+
+            // If the selected value is 'custom', use the custom facility input value
+            if (facilitiesProvided === 'custom') {
+                facilitiesProvided = form.elements['customFacility'].value;
+            }
+
+            // Save data to Firebase Realtime Database under 'institutionRegistrations' node
+            database.ref('institutionRegistrations').push({
+                    collegeName,
+                    phoneNumber,
+                    email,
+                    facilitiesProvided
+                })
+                .then(() => {
+                    // Reset the form after successful submission
+                    form.reset();
+                    alert('Form submitted successfully!');
+                })
+                .catch((error) => {
+                    console.error('Error writing to Firebase Database: ', error);
+                    alert('An error occurred. Please try again later.');
+                });
+        });
+
+        // Listen for changes in the facilitiesProvided select input
+        document.getElementById('facilitiesProvided').addEventListener('change', function() {
+            const customFacilityInput = document.getElementById('customFacility');
+            if (this.value === 'custom') {
+                // Show the custom facility input when 'custom' is selected
+                customFacilityInput.style.display = 'block';
+                customFacilityInput.required = true; // Make the input required
+            } else {
+                // Hide the custom facility input when other options are selected
+                customFacilityInput.style.display = 'none';
+                customFacilityInput.required = false; // Make the input not required
+            }
+        });
+    </script>
 </body>
+
 </html>
