@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
     <meta charset="UTF-8" />
@@ -19,6 +20,44 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
+        /* Preloader CSS */
+        
+        #preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fff;
+            /* Background color for the preloader */
+            z-index: 9999;
+            /* Ensure it's on top of other elements */
+        }
+        
+        #preloader .spinner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border: 5px solid #f3f3f3;
+            /* Light grey */
+            border-top: 5px solid #3498db;
+            /* Blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            /* Spin animation */
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -428,7 +467,51 @@
                 }
             });
         });
+
+        // ... Your existing code ...
+        document.getElementById("studentForm").addEventListener("submit", function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+
+            // Show the preloader
+            var preloader = document.createElement("div");
+            preloader.id = "preloader";
+            preloader.innerHTML = '<div class="spinner"></div>';
+            document.body.appendChild(preloader);
+
+            // Check conditions based on goals and skills
+            var goalsValue = document.getElementById("goals").value;
+            var skillsValue = document.getElementById("skill").value;
+
+            // Define your conditions here, you can modify as per your requirement
+            if (goalsValue.includes("Software Engineer") && (skillsValue.includes("Programming") || skillsValue.includes("Web Application Development") || skillsValue.includes("Software Development"))) {
+                // Redirect to Page A after a delay of 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                    window.location.href = "AI_RECOMMAND.html";
+                }, 2000);
+            } else if (goalsValue.includes("Data Scientist") && (skillsValue.includes("Data Analysis") || skillsValue.includes("Programming") || skillsValue.includes("Object-Oriented Programming"))) {
+                // Redirect to Page B after a delay of 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                    window.location.href = "12.html";
+                }, 2000);
+            } else if (goalsValue.includes("Graphic Designer") && (skillsValue.includes("Adobe Illustrator") || skillsValue.includes("Digital Literacy"))) {
+                // Redirect to Page C after a delay of 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                    window.location.href = "13.html";
+                }, 2000);
+            } else {
+                // Redirect to default page or handle other conditions after a delay of 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                    window.location.href = "AI_RECOMMAND.html";
+                }, 2000);
+            }
+        });
+
+
+        // ... Your existing code ...
     </script>
+
+
 
 
 
