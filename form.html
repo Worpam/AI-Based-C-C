@@ -15,148 +15,81 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     <!-- Google Analytics (Optional) -->
     <script src="https://www.google-analytics.com/analytics.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
-        /* Style for the navigation */
-        
         body {
-            background: #ffffff;
-            color: black;
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
-            font-size: 16px;
             padding: 0;
         }
         
         nav {
-            background-color: #007bff;
+            background-color: #333;
             color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
+            padding: 10px;
+            text-align: center;
         }
         
         nav a {
             color: #fff;
             text-decoration: none;
             margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: #fff;
-            text-decoration: underline;
         }
         
         form {
-            background-color: #f7f7f7;
-            padding: 20px;
             max-width: 600px;
             margin: 20px auto;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        /* Style the input fields */
         
-        input[type="text"] {
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        select {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
-            box-sizing: border-box;
-            border-radius: 5px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
-        }
-        /* Style the input fields */
-        
-        input[type="submit"] {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        
-        .field {
-            margin-bottom: 20px;
-        }
-        
-        .label {
-            font-weight: bold;
-        }
-        
-        .input,
-        .textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
             box-sizing: border-box;
-            margin-top: 5px;
         }
         
-        .checkbox-container {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        .checkbox-label {
-            margin-right: 20px;
-        }
-        /* Style for the submit button */
-        
-        .button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .button:hover {
-            background-color: #0056b3;
-        }
-        
-        .recommendation {
-            display: inline-block;
-            margin: 5px;
-            padding: 8px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            outline: none;
-        }
-        
-        .recommendation:hover {
-            background-color: #0056b3;
-        }
-        
-        .score-input {
-            margin-top: 10px;
-        }
-        
-        .checkbox-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-        
-        .checkbox-label input {
+        input[type="checkbox"] {
             margin-right: 5px;
         }
         
-        .checkbox-label.selected {
+        input[type="submit"] {
+            background-color: #4caf50;
             color: #fff;
-            background-color: #007bff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        /* Add this CSS to your existing styles */
+        
+        label {
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        input[type="radio"] {
+            display: inline-block;
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -166,15 +99,77 @@
         <a href="https://aaryaninvincible.github.io/AI-Based-C-C/">Home</a>
         <a href="#">Report</a>
     </nav>
-    <!-- <form method="post" action="process_form.php"> -->
 
     <form id="studentForm" method="post">
+        <!-- <div class="field"> -->
+        <!-- <label class="label" for="interest">Interest</label> -->
+        <!-- <div class="control"> -->
+        <!-- <input class="input" type="text" id="interest" name="interest" placeholder="E.g., Science, Arts" /> -->
+        <!-- </div> -->
+        <!-- </div> -->
+
         <div class="field">
             <label class="label" for="interest">Interest</label>
-            <div class="control">
-                <input class="input" type="text" id="interest" name="interest" placeholder="E.g., Science, Arts" />
+            <input class="input" type="text" id="interest" name="interest" readonly />
+        </div>
+        <div class="control">
+            <div id="interest">
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Python" /> Python
+                </label>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Machine Learning" /> Machine Learning
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Data Analysis" /> Data Analysis
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="SQL" /> SQL
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Data Visualization" /> Data Visualization
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="R Programming" /> R Programming
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Statistics" /> Statistics
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Deep Learning" /> Deep Learning
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Big Data" /> Big Data
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Data Mining" /> Data Mining
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Tableau" /> Tableau
+                </label>
             </div>
         </div>
+
+
+
+
+
+        <div>
+            <label for="educationLevel">Education Level:</label>
+            <select id="educationLevel" name="educationLevel">
+                    <option value="10th">10th</option>
+                    <option value="12th">12th</option>
+                    <option value="professional certificate">Professional Certificate</option>
+                    <option value="in college (undergraduate)">In College (Undergraduate)</option>
+                    <option value="graduated">Graduated</option>
+                    <option value="postgraduate">Postgraduate</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="doctorate">Doctorate</option>
+                    <option value="post doctorate">Post Doctorate</option>
+                </select>
+        </div>
+
         <div class="field">
             <label class="label" for="goals">Goals</label>
             <div class="control">
@@ -183,14 +178,15 @@
             <div id="dynamic-recommendations">
                 <label>Recommendations:</label><br />
                 <label><input type="checkbox" value="Software Engineer" /> Software
-                    Engineer</label>
+                        Engineer</label>
                 <label><input type="checkbox" value="Graphic Designer" /> Graphic
-                    Designer</label>
+                        Designer</label>
                 <label><input type="checkbox" value="Data Scientist" /> Data
-                    Scientist</label>
+                        Scientist</label>
                 <label><input type="checkbox" value="Teacher" /> Teacher</label>
             </div>
         </div>
+        <br>
         <div class="field">
             <label class="label" for="skill">Skills</label>
             <input class="input" type="text" id="skill" name="skill" readonly />
@@ -198,7 +194,7 @@
         <div class="control">
             <div class="checkbox-container">
                 <label class="checkbox-label">
-                        <input type="checkbox" value="Software Development" /> Digital Literacy </label>
+                        <input type="checkbox" value="Digital Literacy" /> Digital Literacy </label>
 
                 <label class="checkbox-label">
                         <input type="checkbox" value="Software Development" />Software
@@ -235,39 +231,69 @@
 
             </div>
             <br>
-            <div class="field">
-                <label class="label" for="work_experience">Work Experience</label>
-                <div class="control">
-                    <label class="radio">
-                            <input type="radio" id="work_experience_yes"
-                                name="work_experience" value="yes" />
-                            Yes
-                        </label>
-                    <label class="radio">
-                            <input type="radio" id="work_experience_no"
-                                name="work_experience" value="no" />
-                            No
-                        </label>
-                </div>
-            </div>
-            <div class="work-experience-field"></div>
 
-            <div class="field">
-                <label class="label" for="achievements">Achievements</label>
-                <div class="control">
-                    <label class="radio">
-                            <input type="radio" id="achievements_yes"
-                                name="achievements" value="yes" />
-                            Yes
-                        </label>
-                    <label class="radio">
-                            <input type="radio" id="achievements_no"
-                                name="achievements" value="no" />
-                            No
-                        </label>
+            <form id="jobExperienceForm">
+                <div class="input-container">
+                    <label for="jobExperience">Have you had any work experience?</label>
+                    <div>
+                        <label><input type="radio" name="jobExperience" value="yes"> Yes</label>
+                        <label><input type="radio" name="jobExperience" value="no"> No</label>
+                    </div>
+                </div>
+                <div id="jobDetails" style="display: none;">
+                    <div class="input-container">
+                        <label for="jobType">Type of Job:</label>
+                        <select id="jobType" name="jobType">
+                                <option value="fullTime">Full-time</option>
+                                <option value="partTime">Part-time</option>
+                                <option value="internship">Internship</option>
+                            </select>
+                    </div>
+                    <div class="input-container">
+                        <label for="organization">Organization:</label>
+                        <input type="text" id="organization" name="organization">
+                    </div>
+                    <div class="input-container">
+                        <label for="fromDate">From:</label>
+                        <input type="date" id="fromDate" name="fromDate">
+                    </div>
+                    <div class="input-container">
+                        <label for="toDate">To:</label>
+                        <input type="date" id="toDate" name="toDate">
+                    </div>
+                </div>
+
+            </form>
+            <div>
+                <label for="jobExperience">Have you had any Achivements?</label>
+                <br>
+                <label for="achievement-yes"> <input type="radio" id="achievement-yes" name="achievement"
+                            value="yes">Yes</label>
+
+                <input type="radio" id="achievement-no" name="achievement" value="no">
+                <label for="achievement-no">No</label>
+
+                <div id="achievement-details" style="display: none;">
+                    <select id="achievement-type">
+                            <option value="">Select Type</option>
+                            <option value="international">International</option>
+                            <option value="national">National</option>
+                            <option value="state">State</option>
+                            <option value="district">District</option>
+                            <option value="academic">Academic</option>
+                        </select>
+                    <br>
+                    <label for="organisation">Organisation:</label>
+                    <input type="text" id="organisation">
+                    <br>
+                    <label for="position">Position or Ranking:</label>
+                    <input type="text" id="position">
+                    <br>
+                    <label for="date">Date:</label>
+                    <input type="text" id="date">
                 </div>
             </div>
-            <div class="achievements-field"></div>
+
 
             <div class="field">
                 <label class="label" for="competition_exam">Competition Exam</label>
@@ -313,62 +339,45 @@
                 });
             document.getElementById("skill").value = selectedSkills.join(", ");
         }
-        // Add event listeners for goals and skills checkboxes
+
+        function handleInterestCheckboxChange() {
+            var interestCheckboxes = document.querySelectorAll(
+                '#interest input[type="checkbox"]'
+            );
+            var selectedInterests = Array.from(interestCheckboxes)
+                .filter(function(checkbox) {
+                    return checkbox.checked;
+                })
+                .map(function(checkbox) {
+                    return checkbox.value;
+                });
+            document.getElementById("interest").value = selectedInterests.join(", ");
+        }
+
+        // Add event listeners for goals, skills, and interest checkboxes
         var goalsCheckboxes = document.querySelectorAll(
             '#dynamic-recommendations input[type="checkbox"]'
         );
         goalsCheckboxes.forEach(function(checkbox) {
             checkbox.addEventListener("change", handleCheckboxChange);
         });
+
         var skillsCheckboxes = document.querySelectorAll(
             '.checkbox-container input[type="checkbox"]'
         );
         skillsCheckboxes.forEach(function(checkbox) {
             checkbox.addEventListener("change", handleSkillsCheckboxChange);
         });
-        $(document).ready(function() {
-            $('input[name="work_experience"]').change(function() {
-                var inputValue = $(this).val();
-                $(".work-experience-field").empty();
-                if (inputValue === "yes") {
-                    $(".work-experience-field").append(
-                        '<div class="field">' +
-                        '<label class="label" for="work_type">What kind of work experience do you have?</label>' +
-                        '<div class="control">' +
-                        '<input class="input" type="text" id="work_type" name="work_type" placeholder="Work Type">' +
-                        "</div>" +
-                        "</div>" +
-                        '<div class="field">' +
-                        '<label class="label" for="work_description">Provide a brief description of your work experience</label>' +
-                        '<div class="control">' +
-                        '<textarea class="textarea" id="work_description" name="work_description" placeholder="Work Description"></textarea>' +
-                        "</div>" +
-                        "</div>"
-                    );
-                }
-            });
 
-            $('input[name="achievements"]').change(function() {
-                var inputValue = $(this).val();
-                $(".achievements-field").empty();
-                if (inputValue === "yes") {
-                    $(".achievements-field").append(
-                        '<div class="field">' +
-                        '<label class="label" for="achievement_description">Achievement Description</label>' +
-                        '<div class="control">' +
-                        '<input class="input" type="text" id="achievement_description" name="achievement_description" placeholder="Enter achievement description">' +
-                        "</div>" +
-                        "</div>" +
-                        '<div class="field">' +
-                        '<label class="label" for="achievement_date">Achievement Date</label>' +
-                        '<div class="control">' +
-                        '<input class="input" type="date" id="achievement_date" name="achievement_date">' +
-                        "</div>" +
-                        "</div>"
-                    );
-                }
-            });
+        var interestCheckboxes = document.querySelectorAll(
+            '#interest input[type="checkbox"]'
+        );
+        interestCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("change", handleInterestCheckboxChange);
         });
+
+
+
         document.getElementById("competition_exam").addEventListener("input", function() {
 
             var examInputValue = this.value.trim().toLowerCase();
@@ -395,49 +404,29 @@
             }
         }
 
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCkqXvVp0c94_49CDKKO8BB5Qg79prCz4k",
-            authDomain: "careercounclinghub.firebaseapp.com",
-            databaseURL: "https://careercounclinghub-default-rtdb.firebaseio.com",
-            projectId: "careercounclinghub",
-            storageBucket: "careercounclinghub.appspot.com",
-            messagingSenderId: "381752816613",
-            appId: "1:381752816613:web:c33143b3ce353c90cbb50c",
-            measurementId: "G-ZD9FPVN91N"
-        };
+        document.addEventListener('DOMContentLoaded', function() {
+            var jobExperienceRadio = document.querySelectorAll('input[name="jobExperience"]');
+            var jobDetails = document.getElementById('jobDetails');
 
-        // Initialize Firebase
-
-
-        firebase.initializeApp(firebaseConfig);
-
-        // Add event listener for form submission
-        document.getElementById('studentForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            // Gather form data
-            var formData = {
-                interest: document.getElementById('interest').value,
-                goals: document.getElementById('goals').value,
-                skils: document.getElementById('skill').value,
-                //work: document.getElementById('work').value,
-                competitionexam: document.getElementById('competition_exam').value,
-                // Add other form fields here
-            };
-
-            // Push form data to Firebase Realtime Database
-            firebase.database().ref('studentForms').push(formData)
-                .then(function() {
-                    // Data successfully sent to Firebase
-                    alert('Form data submitted successfully!');
-                    document.getElementById('studentForm').reset(); // Reset the form
-                    document.getElementById('skill').value = ''; // Clear the skills input
-                })
-                .catch(function(error) {
-                    // Error occurred while sending data to Firebase
-                    alert('Error submitting form data: ' + error.message);
+            for (var i = 0; i < jobExperienceRadio.length; i++) {
+                jobExperienceRadio[i].addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        jobDetails.style.display = 'block';
+                    } else {
+                        jobDetails.style.display = 'none';
+                    }
                 });
+            }
+        });
+
+        $(document).ready(function() {
+            $('input[name="achievement"]').change(function() {
+                if ($(this).val() === "yes") {
+                    $('#achievement-details').show();
+                } else {
+                    $('#achievement-details').hide();
+                }
+            });
         });
     </script>
 
