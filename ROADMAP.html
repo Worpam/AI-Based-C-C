@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,28 +11,7 @@
             margin: 0;
             padding: 0;
         }
-        
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            text-align: center;
-            /* Center the links */
-        }
-        
-        .navbar a {
-            display: inline-block;
-            /* Display links in line */
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-        
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        
+
         form {
             max-width: 600px;
             margin: 20px auto;
@@ -41,7 +19,7 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         input[type="submit"] {
             background-color: #4caf50;
             color: #fff;
@@ -51,77 +29,16 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        
+
         input[type="submit"]:hover {
             background-color: #45a049;
         }
-        /* button design */
-        
-        #skipButton {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            border: 1px solid #4CAF50;
-            background-color: #4CAF50;
-            color: #fff;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        #skipButton:hover {
-            background-color: #45a049;
-        }
-        
-        .preloader-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
-            /* Semi-transparent white background */
-            display: none;
-            /* Initially hidden */
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            /* Ensure it's on top of other elements */
-        }
-        /* Style for the preloader */
-        
-        .preloader {
-            border: 8px solid #f3f3f3;
-            /* Light grey */
-            border-top: 8px solid #3498db;
-            /* Blue */
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 5s linear infinite;
-            /* Spin animation */
-        }
-        /* Spin animation */
-        
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
     </style>
 </head>
-
 <body>
-    <div class="navbar">
-        <a href="form.html">Home</a>
-        <a href="#">Report</a>
-    </div>
 
     <form id="softwareDevAptitudeForm">
-        <h2>Aptitude Test Based On Your Choice</h2>
+        <h2>Software Development Aptitude Test</h2>
 
         <label>1. What does CSS stand for?</label>
         <br>
@@ -184,17 +101,9 @@
         <input type="radio" name="q10" value="500"> 500 Internal Server Error<br>
 
         <input type="submit" value="Submit">
-        <button id="skipButton">Skip</button>
-
-    </form>
-    <div class="preloader-container">
-        <div class="preloader"></div>
-        <p>AI is working...</p>
-    </div>
-    <!-- 
         
-     -->
-
+    </form>
+   
     <script>
         document.getElementById("softwareDevAptitudeForm").addEventListener("submit", function(event) {
             event.preventDefault();
@@ -227,7 +136,7 @@
             // Check if the user passed or failed
             if (score >= passingScore) {
                 // Redirect to the success page
-                window.location.href = "softwareRoadMap.html";
+                window.location.href = "ROADMAP.html";
             } else {
                 // Show alert and allow user to try again
                 alert("You failed the software development aptitude test. Please try again.");
@@ -237,38 +146,7 @@
                 // window.location.href = "retry.html";
             }
         });
-
-        document.getElementById("skipButton").addEventListener("click", function() {
-            // Redirect to another page when the skip button is clicked
-            window.location.href = "softwareRoadMap.html";
-        });
-
-        function showPreloader() {
-            document.querySelector('.preloader-container').style.display = 'flex';
-        }
-
-        // Function to hide the preloader
-        function hidePreloader() {
-            document.querySelector('.preloader-container').style.display = 'none';
-        }
-
-        document.getElementById("softwareDevAptitudeForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            showPreloader(); // Show the preloader when the form is submitted
-
-            // Your existing form submission logic here...
-        });
-
-        document.getElementById("skipButton").addEventListener("click", function() {
-            showPreloader(); // Show the preloader when the skip button is clicked
-            // Redirect to another page when the skip button is clicked
-            window.location.href = "softwareRoadMap.html";
-        });
     </script>
 
 </body>
-
 </html>
-<!-- 
-
- -->

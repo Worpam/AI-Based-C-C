@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Career Recommendation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.careerRecomedation ul li').each(function(index) {
+                $(this).delay(500 * index).fadeIn(1500); // Adjust the delay and fadeIn duration as needed
+            });
+        });
+    </script>
+</head>
+<body>
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            text-align: center; /* Center the links */
+        }
+
+        .navbar a {
+            display: inline-block; /* Display links in line */
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Style for buttons */
+        .proceed-regenerate {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .proceed-regenerate button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Style for the "Regenerate" button */
+        .proceed-regenerate button:nth-child(2) {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* Hover effect */
+        .proceed-regenerate button:hover {
+            opacity: 0.8;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .careerRecommendation {
+            margin-top: 20px;
+            max-width: 60%;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .careerRecomedation li {
+            background-color: #f2f2f2;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        li:hover{
+            background-color: #333;
+            color: #f2f2f2;
+            transition: 0.5s;
+        }
+        .proceed-regenerate {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .proceed-regenerate button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Style for the "Proceed" button */
+        .proceed-regenerate button:nth-child(1) {
+            background-color: #f44336;
+            color: white;
+            opacity: 0.8;
+        }
+
+        /* Hover effect */
+        .proceed-regenerate button:hover {
+            opacity: 1;
+        }
+
+        .careerRecomedation ul li {
+            display: none;
+        }
+        
+    </style>
+    <div class="navbar">
+        <a href="form.html">Home</a>
+        <a href="#">Report</a>
+    </div>
+
+    <h1>The AI recommends this career based on your input.</h1>
+    <div class="careerRecomedation">
+        <ul>
+            <li>Learn Basic Programming Concepts, Data Structures, Algorithms, and Problem-Solving Skills</li>
+            <li>Choose a Programming Language to Master</li>
+            <li>Pursue Higher Secondary Education with Focus on Mathematics and Computer Science</li>
+            <li>Engage in Coding Competitions, Join Coding Clubs, and Online Platforms </li>
+            <li>Explore Online Learning Platforms for Additional Skills  </li>
+            <li>Build a Portfolio with Personal Projects</li>
+            <li>Consider Enrolling in a Diploma or Degree Program in Computer Science or Software Engineering </li>
+            <li>Gain Practical Experience through Internships, Projects or Freelancing</li>
+            <li>Stay Updated with Latest Technologies and Industry Trends</li>
+            <li>Network with Professionals, Attend Events, and Join Coding Communities</li>
+
+        </ul>
+
+    </div>
+    <div class="proceed-regenerate">
+        <!-- <button>Proceed</button> -->
+        <a href="AI_RECOMMAND.html"><button>Regenerate</button></a>
+    </div>
+</body>
+</html>
