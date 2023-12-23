@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+a
 
 <head>
 
@@ -22,57 +23,6 @@
     <style>
         /* Add this to your existing CSS styles */
         /* Add this to your existing CSS styles */
-        
-        #preloader {
-            /* ... Your existing styles ... */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            height: 100vh;
-            /* Make the preloader cover the whole viewport height */
-        }
-        
-        #preloader-text {
-            margin-bottom: 10px;
-        }
-        
-        #dots-animation {
-            display: flex;
-            align-items: center;
-            margin-top: 100px;
-            /* Add some space between the text and the dots */
-        }
-        
-        #dots-animation span {
-            animation: dots-animation 1s infinite;
-            opacity: 0;
-        }
-        
-        @keyframes dots-animation {
-            0% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-        
-        #dot1 {
-            animation-delay: 0s;
-        }
-        
-        #dot2 {
-            animation-delay: 0.2s;
-        }
-        
-        #dot3 {
-            animation-delay: 0.4s;
-        }
         
         #preloader {
             position: fixed;
@@ -401,16 +351,7 @@
                 </div>
             </div>
     </form>
-    <!-- Add this inside the <body> tag, before the <form> element -->
-    <div id="preloader">
-        <p id="preloader-text">Analyzing your data</p>
-        <div class="spinner"></div>
-        <div id="dots-animation">
-            <span id="dot1">.</span>
-            <span id="dot2">.</span>
-            <span id="dot3">.</span>
-        </div>
-    </div>
+
 
     <script>
         function handleCheckboxChange() {
@@ -571,7 +512,7 @@
         });
 
 
-        // ... Your existing code ...
+   
     </script>
 
 
@@ -579,6 +520,6 @@
 
 
 
-</body>
+
 
 </html>
