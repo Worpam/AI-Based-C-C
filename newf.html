@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>studentform</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <!-- Firebase Auth (the OAuth2 identity toolkit SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <!-- Google Analytics (Optional) -->
+    <script src="https://www.google-analytics.com/analytics.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        /* Add this to your existing CSS styles */
+        /* Add this to your existing CSS styles */
+        
+        #preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fff;
+            /* Background color for the preloader */
+            z-index: 9999;
+            /* Ensure it's on top of other elements */
+        }
+        
+        #preloader .spinner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border: 5px solid #f3f3f3;
+            /* Light grey */
+            border-top: 5px solid #3498db;
+            /* Blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            /* Spin animation */
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #007bff;
+        }
+        /* Add this CSS to your existing styles */
+        
+        label {
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        input[type="radio"] {
+            display: inline-block;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="https://aaryaninvincible.github.io/AI-Based-C-C/">Home</a>
+        <a href="#">Report</a>
+    </nav>
+
+    <form id="studentForm" method="post">
+        <!-- <div class="field"> -->
+        <!-- <label class="label" for="interest">Interest</label> -->
+        <!-- <div class="control"> -->
+        <!-- <input class="input" type="text" id="interest" name="interest" placeholder="E.g., Science, Arts" /> -->
+        <!-- </div> -->
+        <!-- </div> -->
+
+        <div class="field">
+            <label class="label" for="interest">Interest</label>
+            <input class="input" type="text" id="interest" name="interest" readonly />
+        </div>
+        <div class="control">
+            <div id="interest">
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Python" /> Python
+                </label>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Machine Learning" /> Machine Learning
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Data Analysis" /> Data Analysis
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="SQL" /> SQL
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Data Visualization" /> Data Visualization
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="R Programming" /> R Programming
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Statistics" /> Statistics
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Deep Learning" /> Deep Learning
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Big Data" /> Big Data
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Data Mining" /> Data Mining
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" value="Tableau" /> Tableau
+                </label>
+            </div>
+        </div>
+
+
+
+
+
+        <div>
+            <label for="educationLevel">Education Level:</label>
+            <select id="educationLevel" name="educationLevel">
+                    <option value="10th">10th</option>
+                    <option value="12th">12th</option>
+                    <option value="professional certificate">Professional Certificate</option>
+                    <option value="in college (undergraduate)">In College (Undergraduate)</option>
+                    <option value="graduated">Graduated</option>
+                    <option value="postgraduate">Postgraduate</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="doctorate">Doctorate</option>
+                    <option value="post doctorate">Post Doctorate</option>
+                </select>
+        </div>
+
+        <div class="field">
+            <label class="label" for="goals">Goals</label>
+            <div class="control">
+                <input class="input" type="text" id="goals" name="goals" placeholder="E.g., Become a doctor" />
+            </div>
+            <div id="dynamic-recommendations">
+                <label>Recommendations:</label><br />
+                <label><input type="checkbox" value="Software Engineer" /> Software
+                        Engineer</label>
+                <label><input type="checkbox" value="Graphic Designer" /> Graphic
+                        Designer</label>
+                <label><input type="checkbox" value="Data Scientist" /> Data
+                        Scientist</label>
+                <label><input type="checkbox" value="Teacher" /> Teacher</label>
+            </div>
+        </div>
+        <br>
+        <div class="field">
+            <label class="label" for="skill">Skills</label>
+            <input class="input" type="text" id="skill" name="skill" readonly />
+        </div>
+        <div class="control">
+            <div class="checkbox-container">
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Digital Literacy" /> Digital Literacy </label>
+
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Software Development" />Software
+                        Development</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Front-End Development" />Front-End
+                        Development</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Node.js" />Node.js</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="AngularJS" />AngularJS</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Java" />Java</label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="HTML5" />
+                        HTML5
+                    </label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Object-Oriented Programming" />
+                        Object-Oriented Programming
+                    </label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Programming" />
+                        Programming
+                    </label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Web Application Development" />
+                        Web Application Development
+                    </label>
+                <label class="checkbox-label">
+                        <input type="checkbox" value="Adobe Illustrator" />
+                        Adobe Illustrator
+                    </label>
+
+            </div>
+            <br>
+
+            <form id="jobExperienceForm">
+                <div class="input-container">
+                    <label for="jobExperience">Have you had any work experience?</label>
+                    <div>
+                        <label><input type="radio" name="jobExperience" value="yes"> Yes</label>
+                        <label><input type="radio" name="jobExperience" value="no"> No</label>
+                    </div>
+                </div>
+                <div id="jobDetails" style="display: none;">
+                    <div class="input-container">
+                        <label for="jobType">Type of Job:</label>
+                        <select id="jobType" name="jobType">
+                                <option value="fullTime">Full-time</option>
+                                <option value="partTime">Part-time</option>
+                                <option value="internship">Internship</option>
+                            </select>
+                    </div>
+                    <div class="input-container">
+                        <label for="organization">Organization:</label>
+                        <input type="text" id="organization" name="organization">
+                    </div>
+                    <div class="input-container">
+                        <label for="fromDate">From:</label>
+                        <input type="date" id="fromDate" name="fromDate">
+                    </div>
+                    <div class="input-container">
+                        <label for="toDate">To:</label>
+                        <input type="date" id="toDate" name="toDate">
+                    </div>
+                </div>
+
+            </form>
+            <div>
+                <label for="jobExperience">Have you had any Achivements?</label>
+                <br>
+                <label for="achievement-yes"> <input type="radio" id="achievement-yes" name="achievement"
+                            value="yes">Yes</label>
+
+                <input type="radio" id="achievement-no" name="achievement" value="no">
+                <label for="achievement-no">No</label>
+
+                <div id="achievement-details" style="display: none;">
+                    <select id="achievement-type">
+                            <option value="">Select Type</option>
+                            <option value="international">International</option>
+                            <option value="national">National</option>
+                            <option value="state">State</option>
+                            <option value="district">District</option>
+                            <option value="academic">Academic</option>
+                        </select>
+                    <br>
+                    <label for="organisation">Organisation:</label>
+                    <input type="text" id="organisation">
+                    <br>
+                    <label for="position">Position or Ranking:</label>
+                    <input type="text" id="position">
+                    <br>
+                    <label for="date">Date:</label>
+                    <input type="text" id="date">
+                </div>
+            </div>
+
+
+            <div class="field">
+                <label class="label" for="competition_exam">Competition Exam</label>
+                <div class="control">
+                    <input class="input" type="text" id="competition_exam" name="competition_exam" placeholder="E.g., JEE, NEET" oninput="handleExamInput(this.value)" />
+                </div>
+                <div class="recommendations"></div>
+            </div>
+            <br><br>
+            <!-- Other form fields here -->
+            <div class="field is-grouped">
+                <div class="control">
+                    <input class="button is-link" type="submit" value="Submit" />
+                </div>
+            </div>
+    </form>
+
+
+    <script>
+        function handleCheckboxChange() {
+            var checkboxes = document.querySelectorAll(
+                '#dynamic-recommendations input[type="checkbox"]'
+            );
+            var selectedRecommendations = Array.from(checkboxes)
+                .filter(function(checkbox) {
+                    return checkbox.checked;
+                })
+                .map(function(checkbox) {
+                    return checkbox.value;
+                });
+            document.getElementById("goals").value =
+                selectedRecommendations.join(", ");
+        }
+
+        function handleSkillsCheckboxChange() {
+            var checkboxes = document.querySelectorAll(
+                '.checkbox-container input[type="checkbox"]'
+            );
+            var selectedSkills = Array.from(checkboxes)
+                .filter(function(checkbox) {
+                    return checkbox.checked;
+                })
+                .map(function(checkbox) {
+                    return checkbox.value;
+                });
+            document.getElementById("skill").value = selectedSkills.join(", ");
+        }
+
+        function handleInterestCheckboxChange() {
+            var interestCheckboxes = document.querySelectorAll(
+                '#interest input[type="checkbox"]'
+            );
+            var selectedInterests = Array.from(interestCheckboxes)
+                .filter(function(checkbox) {
+                    return checkbox.checked;
+                })
+                .map(function(checkbox) {
+                    return checkbox.value;
+                });
+            document.getElementById("interest").value = selectedInterests.join(", ");
+        }
+
+        // Add event listeners for goals, skills, and interest checkboxes
+        var goalsCheckboxes = document.querySelectorAll(
+            '#dynamic-recommendations input[type="checkbox"]'
+        );
+        goalsCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("change", handleCheckboxChange);
+        });
+
+        var skillsCheckboxes = document.querySelectorAll(
+            '.checkbox-container input[type="checkbox"]'
+        );
+        skillsCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("change", handleSkillsCheckboxChange);
+        });
+
+        var interestCheckboxes = document.querySelectorAll(
+            '#interest input[type="checkbox"]'
+        );
+        interestCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener("change", handleInterestCheckboxChange);
+        });
+
+
+
+        document.getElementById("competition_exam").addEventListener("input", function() {
+
+            var examInputValue = this.value.trim().toLowerCase();
+            if (examInputValue === "") {
+                // If input is empty, clear recommendations and score input
+                document.querySelector(".recommendations").innerHTML = "";
+            }
+        });
+
+        function handleExamInput(examName) {
+            var recommendationsContainer =
+                document.querySelector(".recommendations");
+
+            // Clear previous recommendations and score input
+            recommendationsContainer.innerHTML = "";
+
+            // If examName is not 'none', append a score input field
+            if (examName.toLowerCase() !== "none") {
+                var scoreInput = document.createElement("input");
+                scoreInput.classList.add("input", "score-input");
+                scoreInput.type = "text";
+                scoreInput.placeholder = "Enter score for " + examName;
+                recommendationsContainer.appendChild(scoreInput);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var jobExperienceRadio = document.querySelectorAll('input[name="jobExperience"]');
+            var jobDetails = document.getElementById('jobDetails');
+
+            for (var i = 0; i < jobExperienceRadio.length; i++) {
+                jobExperienceRadio[i].addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        jobDetails.style.display = 'block';
+                    } else {
+                        jobDetails.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        $(document).ready(function() {
+            $('input[name="achievement"]').change(function() {
+                if ($(this).val() === "yes") {
+                    $('#achievement-details').show();
+                } else {
+                    $('#achievement-details').hide();
+                }
+            });
+        });
+
+        // ... Your existing code ...
+        document.getElementById("studentForm").addEventListener("submit", function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+
+            // Show the preloader
+            var preloader = document.createElement("div");
+            preloader.id = "preloader";
+            preloader.innerHTML = '<div class="spinner"></div>';
+            document.body.appendChild(preloader);
+
+            // Check conditions based on goals and skills
+            var goalsValue = document.getElementById("goals").value;
+            var skillsValue = document.getElementById("skill").value;
+
+            // Define your conditions here, you can modify as per your requirement
+            if (goalsValue.includes("Software Engineer") && (skillsValue.includes("Programming") || skillsValue.includes("Web Application Development") || skillsValue.includes("Software Development"))) {
+                // Redirect to Page A after a delay of 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                    window.location.href = "AI_RECOMMAND.html";
+                }, 2000);
+            } else if (goalsValue.includes("Data Scientist") && (skillsValue.includes("Data Analysis") || skillsValue.includes("Programming") || skillsValue.includes("Object-Oriented Programming"))) {
+                // Redirect to Page B after a delay of 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                    window.location.href = "12.html";
+                }, 2000);
+            } else if (goalsValue.includes("Graphic Designer") && (skillsValue.includes("Adobe Illustrator") || skillsValue.includes("Digital Literacy"))) {
+                // Redirect to Page C after a delay of 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                    window.location.href = "13.html";
+                }, 2000);
+            } else {
+                // Redirect to default page or handle other conditions after a delay of 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                    window.location.href = "AI_RECOMMAND.html";
+                }, 2000);
+            }
+        });
+
+
+        // ... Your existing code ...
+    </script>
+
+
+
+
+
+
+    </>
+
+</html>
