@@ -8,6 +8,42 @@
 <body>
 
     <style>
+        #preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fff;
+            /* Background color for the preloader */
+            z-index: 9999;
+            /* Ensure it's on top of other elements */
+        }
+        
+        #preloader .spinner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border: 5px solid #f3f3f3;
+            /* Light grey */
+            border-top: 5px solid #3498db;
+            /* Blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 5s linear infinite;
+            /* Spin animation */
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+        
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -120,32 +156,8 @@
         .proceed-regenerate button:hover {
             opacity: 1;
         }
-        
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.7s ease;
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        #preloader.active {
-            opacity: 1;
-            pointer-events: all;
-        }
     </style>
-    <div id="preloader">
-        <img src="path_to_your_preloader_image.gif" alt="Loading...">
-    </div>
-
+    </head>
     <div class="navbar">
         <a href="form.html">Home</a>
         <a href="#">Report</a>
@@ -154,18 +166,18 @@
     <h1>The AI recommends this career based on your input.</h1>
     <div class="careerRecomedation">
         <ul>
-            <a href="test.html">
-                <li> SOFTWARE DEVELOPER</li>
+            <a href="data&pcbAptitude.html">
+                <li> DATA ANALYST</li>
             </a>
             <!-- <a href=""><li>APP DEVLOPER</li></a> -->
-            <a href="graphicsAptitute.html">
-                <li> UI/UX</li>
-            </a>
             <a href="test.html">
-                <li> WEB DEVELOPER</li>
+                <li> APP DEVELOPER</li>
             </a>
-            <a href="graphicsAptitute.html">
-                <li> GRAPHIC DESIGINER</li>
+            <a href="data&pcbAptitude.html">
+                <li> DATA ENGINEER</li>
+            </a>
+            <a href="data&pcbAptitude.html">
+                <li> PCB DESIGNER</li>
             </a>
             <!-- <a href=""><li> FULL STACK DEVLOPER</li></a> -->
 
@@ -173,27 +185,14 @@
 
     </div>
     <div class="proceed-regenerate">
-        <!-- <button>Proceed</button> -->
-        <a href="ai_recomend.html"><button>Regenerate</button></a>
+        <a href="AI_RECOMMAND.html"><button>Regenerate</button></a>
     </div>
+
     <script>
+        // JavaScript for preloader
         document.addEventListener("DOMContentLoaded", function() {
-            var preloader = document.getElementById('preloader');
-
-            // Add a click event listener to all list items
-            var listItems = document.querySelectorAll('.careerRecomedation li');
-            listItems.forEach(function(item) {
-                item.addEventListener('click', function() {
-                    // Show the preloader
-                    preloader.classList.add('active');
-
-                    // Simulate a delay (replace this with your actual asynchronous code)
-                    setTimeout(function() {
-                        // Hide the preloader after the delay (replace this with your actual asynchronous code completion)
-                        preloader.classList.remove('active');
-                    }, 2000); // Replace 2000 with your desired delay in milliseconds
-                });
-            });
+            // Hide the preloader when the page is fully loaded
+            document.getElementById("preloader").style.display = "none";
         });
     </script>
 </body>
