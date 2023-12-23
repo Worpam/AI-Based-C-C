@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,25 +12,28 @@
             margin: 0;
             padding: 0;
         }
+        
         .navbar {
             overflow: hidden;
             background-color: #333;
-            text-align: center; /* Center the links */
+            text-align: center;
+            /* Center the links */
         }
-
+        
         .navbar a {
-            display: inline-block; /* Display links in line */
+            display: inline-block;
+            /* Display links in line */
             color: white;
             text-align: center;
             padding: 14px 20px;
             text-decoration: none;
         }
-
+        
         .navbar a:hover {
             background-color: #ddd;
             color: black;
         }
-
+        
         form {
             max-width: 600px;
             margin: 20px auto;
@@ -37,7 +41,7 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
+        
         input[type="submit"] {
             background-color: #4caf50;
             color: #fff;
@@ -47,13 +51,13 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
+        
         input[type="submit"]:hover {
             background-color: #45a049;
         }
         /* button design */
-
-        #skipButton {
+        
+        #skipButton2 {
             padding: 10px 20px;
             margin: 10px;
             font-size: 16px;
@@ -64,12 +68,13 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
-        #skipButton:hover {
+        
+        #skipButton2:hover {
             background-color: #45a049;
         }
     </style>
 </head>
+
 <body>
     <div class="navbar">
         <a href="form.html">Home</a>
@@ -89,7 +94,7 @@
         <br>
         <input type="radio" name="q2" value="java"> Data Modeling<br>
         <input type="radio" name="q2" value="php"> Data Modeling<br>
-        <input type="radio" name="q2" value="javascript">  Data Munging<br>
+        <input type="radio" name="q2" value="javascript"> Data Munging<br>
 
         <label>3. Which algorithm is used to classify data into distinct categories in machine learning?</label>
         <br>
@@ -100,7 +105,7 @@
         <label>4. What does 'NLP' stand for in the context of data science and artificial intelligence?</label>
         <br>
         <input type="radio" name="q4" value="queue"> Natural Language Processing<br>
-        <input type="radio" name="q4" value="stack">  Neural Language Processing<br>
+        <input type="radio" name="q4" value="stack"> Neural Language Processing<br>
         <input type="radio" name="q4" value="linkedlist"> Networked Language Processing<br>
 
         <label>5. What does 'PCB' stand for in electronics and circuitry?</label>
@@ -119,7 +124,7 @@
 
         </label>
         <br>
-        <input type="radio" name="q7" value="alignment">  Indicates copper traces<br>
+        <input type="radio" name="q7" value="alignment"> Indicates copper traces<br>
         <input type="radio" name="q7" value="alternative"> Shows component placement and labels<br>
         <input type="radio" name="q7" value="animation"> Displays the solder mask area<br>
 
@@ -142,35 +147,39 @@
         <input type="radio" name="q10" value="500"> 500 Internal Server Error<br>
 
         <input type="submit" value="Submit">
-        <button id="skipButton">Skip</button>
-        
+        <!-- <button ">Skip</button> -->
+        <!-- <button id="skipButton2 ">Skip</button> -->
+        <a href="dataEngineerRoadMap.html ">Skip</a>
+        <!-- <input type="submit" value="Submit"> -->
+        <!-- <button id="skipButton">Skip</button> -->
+
     </form>
 
     <!-- 
         
      -->
-   
+
     <script>
-        document.getElementById("softwareDevAptitudeForm").addEventListener("submit", function(event) {
+        document.getElementById("softwareDevAptitudeForm ").addEventListener("submit ", function(event) {
             event.preventDefault();
 
             // Calculate score (you can modify this based on correct answers)
             var score = 0;
             var answers = {
-                q1: "cascadingstyle",
-                q2: "javascript",
-                q3: "versioncontrol",
-                q4: "stack",
-                q5: "querylanguage",
-                q6: "foreach",
-                q7: "alternative",
-                q8: "datahiding",
-                q9: "initialization",
-                q10: "200"
+                q1: "cascadingstyle ",
+                q2: "javascript ",
+                q3: "versioncontrol ",
+                q4: "stack ",
+                q5: "querylanguage ",
+                q6: "foreach ",
+                q7: "alternative ",
+                q8: "datahiding ",
+                q9: "initialization ",
+                q10: "200 "
             };
 
             for (var question in answers) {
-                var selectedAnswer = document.querySelector('input[name="' + question + '"]:checked');
+                var selectedAnswer = document.querySelector('input[name=" ' + question + ' "]:checked');
                 if (selectedAnswer && selectedAnswer.value === answers[question]) {
                     score++;
                 }
@@ -182,24 +191,25 @@
             // Check if the user passed or failed
             if (score >= passingScore) {
                 // Redirect to the success page
-                window.location.href = "dataEngineerRoadMap.html";
+                window.location.href = "dataEngineerRoadMap.html ";
             } else {
                 // Show alert and allow user to try again
-                alert("You failed the software development aptitude test. Please try again.");
-                window.location.href = "newf.html";
+                alert("You failed the software development aptitude test. Please try again. ");
+                window.location.href = "dataEngineerRoadMap.html ";
 
                 // Optionally, you can redirect to another page for a retry
-                // window.location.href = "retry.html";
+                // window.location.href = "retry.html ";
             }
         });
 
-        document.getElementById("skipButton").addEventListener("click", function() {
+        document.getElementById("skipButton ").addEventListener("click ", function() {
             // Redirect to another page when the skip button is clicked
-            window.location.href = "dataEngineerRoadMap.html";
+            window.location.href = "dataEngineerRoadMap.html ";
         });
     </script>
 
 </body>
+
 </html>
 <!-- 
 
