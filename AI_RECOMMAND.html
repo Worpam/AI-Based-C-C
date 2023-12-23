@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            text-align: center;
+            /* Center the links */
+        }
+        
+        .navbar a {
+            display: inline-block;
+            /* Display links in line */
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        /* Style for buttons */
+        
+        .proceed-regenerate {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .proceed-regenerate button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        /* Style for the "Regenerate" button */
+        
+        .proceed-regenerate button:nth-child(2) {
+            background-color: #f44336;
+            color: white;
+        }
+        /* Hover effect */
+        
+        .proceed-regenerate button:hover {
+            opacity: 0.8;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        .careerRecommendation {
+            margin-top: 20px;
+            max-width: 60%;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .careerRecomedation li {
+            background-color: #f2f2f2;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        
+        li:hover {
+            background-color: #333;
+            color: #f2f2f2;
+            transition: 0.5s;
+        }
+        
+        .proceed-regenerate {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .proceed-regenerate button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        /* Style for the "Proceed" button */
+        
+        .proceed-regenerate button:nth-child(1) {
+            background-color: #f44336;
+            color: white;
+            opacity: 0.8;
+        }
+        /* Hover effect */
+        
+        .proceed-regenerate button:hover {
+            opacity: 1;
+        }
+        
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.7s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        #preloader.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+    </style>
+    <div id="preloader">
+        <img src="path_to_your_preloader_image.gif" alt="Loading...">
+    </div>
+
+    <div class="navbar">
+        <a href="form.html">Home</a>
+        <a href="#">Report</a>
+    </div>
+
+    <h1>The AI recommends this career based on your input.</h1>
+    <div class="careerRecomedation">
+        <ul>
+            <a href="test.html">
+                <li> SOFTWARE DEVELOPER</li>
+            </a>
+            <!-- <a href=""><li>APP DEVLOPER</li></a> -->
+            <a href="graphicsAptitute.html">
+                <li> UI/UX</li>
+            </a>
+            <a href="test.html">
+                <li> WEB DEVELOPER</li>
+            </a>
+            <a href="graphicsAptitute.html">
+                <li> GRAPHIC DESIGINER</li>
+            </a>
+            <!-- <a href=""><li> FULL STACK DEVLOPER</li></a> -->
+
+        </ul>
+
+    </div>
+    <div class="proceed-regenerate">
+        <!-- <button>Proceed</button> -->
+        <a href="ai_recomend.html"><button>Regenerate</button></a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var preloader = document.getElementById('preloader');
+
+            // Add a click event listener to all list items
+            var listItems = document.querySelectorAll('.careerRecomedation li');
+            listItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    // Show the preloader
+                    preloader.classList.add('active');
+
+                    // Simulate a delay (replace this with your actual asynchronous code)
+                    setTimeout(function() {
+                        // Hide the preloader after the delay (replace this with your actual asynchronous code completion)
+                        preloader.classList.remove('active');
+                    }, 2000); // Replace 2000 with your desired delay in milliseconds
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
